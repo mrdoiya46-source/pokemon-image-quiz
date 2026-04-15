@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ポケモン画像テスト</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>ポケモン画像テスト</h1>
+        <p class="subtitle">1問ずつ画像を見て名前を入力</p>
+      </div>
+      <button id="resetSessionBtn" class="ghost-button small">セッション終了</button>
+    </header>
+
+    <main class="card" id="startScreen">
+      <h2>開始設定</h2>
+      <label class="field">
+        <span>ユーザー名</span>
+        <input id="usernameInput" type="text" placeholder="例: sana" maxlength="30">
+      </label>
+
+      <div class="field">
+        <span>出題モード</span>
+        <div class="segmented">
+          <button type="button" class="mode-button active" data-mode="fixed">固定順</button>
+          <button type="button" class="mode-button" data-mode="random">ランダム</button>
+          <button type="button" class="mode-button" data-mode="review">復習</button>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="mini-card">
+          <div class="mini-label">総問題数</div>
+          <div class="mini-value" id="totalQuestionCount">-</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">復習対象</div>
+          <div class="mini-value" id="reviewCount">-</div>
+        </div>
+      </div>
+
+      <div class="notice">
+        復習モードでは、その端末・そのユーザー名で過去に誤答した問題だけが出題されます。
+      </div>
+
+      <div class="actions">
+        <button id="startButton" class="primary-button">開始する</button>
+      </div>
+    </main>
+
+    <main class="card hidden" id="quizScreen">
+      <div class="quiz-head">
+        <div>
+          <div class="status-line" id="modeLabel">固定順</div>
+          <div class="progress" id="progressText">1 / 10</div>
+        </div>
+        <div class="stats">
+          <span id="correctStat">正解 0</span>
+          <span id="wrongStat">誤答 0</span>
+        </div>
+      </div>
+
+      <div class="image-panel">
+        <img id="questionImage" alt="問題画像">
+      </div>
+
+      <div class="field">
+        <span>答えを入力</span>
+        <input id="answerInput" type="text" inputmode="text" autocomplete="off" placeholder="ここに入力">
+      </div>
+
+      <div class="actions quiz-actions">
+        <button id="submitButton" class="primary-button">判定する</button>
+        <button id="skipButton" class="ghost-button">スキップ</button>
+      </div>
+
+      <div id="feedbackBox" class="feedback hidden"></div>
+      <div class="actions hidden" id="nextActionRow">
+        <button id="nextButton" class="primary-button">次の問題へ</button>
+      </div>
+    </main>
+
+    <main class="card hidden" id="resultScreen">
+      <h2>結果</h2>
+      <div class="summary-grid">
+        <div class="mini-card">
+          <div class="mini-label">正解数</div>
+          <div class="mini-value" id="resultCorrect">0</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">誤答数</div>
+          <div class="mini-value" id="resultWrong">0</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">今回の正答率</div>
+          <div class="mini-value" id="resultRate">0%</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">復習対象残数</div>
+          <div class="mini-value" id="resultReviewCount">0</div>
+        </div>
+      </div>
+
+      <div class="notice" id="resultMessage"></div>
+
+      <div class="actions">
+        <button id="retrySameModeButton" class="ghost-button">同じ条件で再挑戦</button>
+        <button id="backToStartButton" class="primary-button">開始画面へ戻る</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="utils.js"></script>
+  <script src="questions-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

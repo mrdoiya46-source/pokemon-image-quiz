@@ -61,7 +61,7 @@ window.POKEMON_QUESTIONS = [
   },
   {
     "id": "0646a",
-    "image": "images/0636-Normal.png",
+    "image": "images/0646-Normal.png",
     "answer": "キュレム",
     "aliases": [
       "キュレム（キュレムのすがた）",

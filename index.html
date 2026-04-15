@@ -9,18 +9,15 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div>
-        <h1>ポケモン画像テスト</h1>
-        <p class="subtitle">1問ずつ画像を見て名前を入力</p>
-      </div>
-      <button id="resetSessionBtn" class="ghost-button small">セッション終了</button>
+      <h1>ポケモン画像テスト</h1>
     </header>
 
     <main class="card" id="startScreen">
       <h2>開始設定</h2>
+
       <label class="field">
         <span>ユーザー名</span>
-        <input id="usernameInput" type="text" placeholder="例: 小山" maxlength="30">
+        <input id="usernameInput" type="text" placeholder="例: sana" maxlength="30">
       </label>
 
       <div class="field">
@@ -32,9 +29,22 @@
         </div>
       </div>
 
+      <label class="field">
+        <span>今回解く数</span>
+        <input
+          id="questionCountInput"
+          type="number"
+          inputmode="numeric"
+          min="1"
+          step="1"
+          placeholder="空欄なら全問"
+        >
+        <small id="questionCountHelp" class="help-text"></small>
+      </label>
+
       <div class="summary-grid">
         <div class="mini-card">
-          <div class="mini-label">総問題数</div>
+          <div class="mini-label">出題候補</div>
           <div class="mini-value" id="totalQuestionCount">-</div>
         </div>
         <div class="mini-card">
@@ -68,24 +78,35 @@
         <img id="questionImage" alt="問題画像">
       </div>
 
-      <div class="field">
-        <span>答えを入力</span>
-        <input id="answerInput" type="text" inputmode="text" autocomplete="off" placeholder="ここに入力">
+      <div id="interactionPanel">
+        <div id="answerPhase">
+          <label class="field">
+            <span>答えを入力</span>
+            <input id="answerInput" type="text" inputmode="text" autocomplete="off" placeholder="ここに入力">
+          </label>
+
+          <div class="actions quiz-actions">
+            <button id="submitButton" class="primary-button">判定する</button>
+            <button id="skipButton" class="ghost-button">スキップ</button>
+          </div>
+        </div>
+
+        <div id="resultPhase" class="hidden">
+          <div id="feedbackBox" class="feedback"></div>
+          <div class="actions">
+            <button id="nextButton" class="primary-button">次の問題へ</button>
+          </div>
+        </div>
       </div>
 
-      <div class="actions quiz-actions">
-        <button id="submitButton" class="primary-button">判定する</button>
-        <button id="skipButton" class="ghost-button">スキップ</button>
-      </div>
-
-      <div id="feedbackBox" class="feedback hidden"></div>
-      <div class="actions hidden" id="nextActionRow">
-        <button id="nextButton" class="primary-button">次の問題へ</button>
+      <div class="session-footer">
+        <button id="resetSessionBtn" class="ghost-button small">セッション終了</button>
       </div>
     </main>
 
     <main class="card hidden" id="resultScreen">
       <h2>結果</h2>
+
       <div class="summary-grid">
         <div class="mini-card">
           <div class="mini-label">正解数</div>
@@ -116,7 +137,6 @@
 
   <script src="storage.js"></script>
   <script src="utils.js"></script>
-  <script src="questions-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

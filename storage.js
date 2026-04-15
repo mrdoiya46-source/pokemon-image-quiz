@@ -1,95 +1,93 @@
 
-(function () {
-  const STORAGE_KEY = "pokemonImageQuizProgressV1";
+const STORAGE_KEY = "pokemonImageQuiz.v2";
 
-  function readAll() {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    } catch (_) {
-      return {};
+function loadStore() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      return { users: {} };
     }
+    const parsed = JSON.parse(raw);
+    if (!parsed.users || typeof parsed.users !== "object") {
+      return { users: {} };
+    }
+    return parsed;
+  } catch {
+    return { users: {} };
+  }
+}
+
+function saveStore(store) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+}
+
+function normalizeUsername(username) {
+  const value = String(username || "").trim();
+  return value || "default";
+}
+
+function ensureUserRecord(username) {
+  const store = loadStore();
+  const key = normalizeUsername(username);
+
+  if (!store.users[key]) {
+    store.users[key] = {
+      questions: {}
+    };
+    saveStore(store);
   }
 
-  function writeAll(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  return store.users[key];
+}
+
+function getUserRecord(username) {
+  const store = loadStore();
+  return store.users[normalizeUsername(username)] || { questions: {} };
+}
+
+function getReviewIds(username) {
+  const user = getUserRecord(username);
+  return Object.entries(user.questions)
+    .filter(([, record]) => record && record.needsReview)
+    .map(([id]) => id);
+}
+
+function recordQuestionResult(username, questionId, isCorrect, rawInput) {
+  const store = loadStore();
+  const key = normalizeUsername(username);
+
+  if (!store.users[key]) {
+    store.users[key] = { questions: {} };
   }
 
-  function ensureUser(data, username) {
-    if (!data[username]) {
-      data[username] = {
-        username,
-        questions: {},
-        lastPlayedMode: "fixed",
-        updatedAt: new Date().toISOString()
-      };
-    }
-    return data[username];
+  if (!store.users[key].questions[questionId]) {
+    store.users[key].questions[questionId] = {
+      wrongCount: 0,
+      correctCount: 0,
+      lastWrongInput: "",
+      lastAnsweredAt: "",
+      needsReview: false
+    };
   }
 
-  window.quizStorage = {
-    getUser(username) {
-      const all = readAll();
-      return ensureUser(all, username);
-    },
+  const record = store.users[key].questions[questionId];
+  record.lastAnsweredAt = new Date().toISOString();
 
-    saveUser(userData) {
-      const all = readAll();
-      all[userData.username] = {
-        ...userData,
-        updatedAt: new Date().toISOString()
-      };
-      writeAll(all);
-    },
+  if (isCorrect) {
+    record.correctCount += 1;
+    record.needsReview = false;
+  } else {
+    record.wrongCount += 1;
+    record.lastWrongInput = String(rawInput || "");
+    record.needsReview = true;
+  }
 
-    recordAnswer(username, questionId, isCorrect, inputValue, mode) {
-      const all = readAll();
-      const user = ensureUser(all, username);
-      const item = user.questions[questionId] || {
-        wrongCount: 0,
-        correctCount: 0,
-        reviewPending: false,
-        lastWrongInput: "",
-        lastAnsweredAt: null
-      };
+  saveStore(store);
+}
 
-      if (isCorrect) {
-        item.correctCount += 1;
-        if (mode === "review") {
-          item.reviewPending = false;
-        }
-      } else {
-        item.wrongCount += 1;
-        item.reviewPending = true;
-        item.lastWrongInput = inputValue;
-      }
-
-      item.lastAnsweredAt = new Date().toISOString();
-      user.questions[questionId] = item;
-      user.lastPlayedMode = mode;
-      all[username] = user;
-      writeAll(all);
-      return item;
-    },
-
-    getReviewIds(username) {
-      const user = this.getUser(username);
-      return Object.entries(user.questions)
-        .filter(([, value]) => value.reviewPending)
-        .map(([id]) => id);
-    },
-
-    getReviewCount(username) {
-      return this.getReviewIds(username).length;
-    },
-
-    resetUser(username) {
-      const all = readAll();
-      delete all[username];
-      writeAll(all);
-    },
-
-    resetAll() {
-      localStorage.removeItem(STORAGE_KEY);
-    }
-  };
-})();
+function clearUserProgress(username) {
+  const store = loadStore();
+  const key = normalizeUsername(username);
+  delete store.users[key];
+  saveStore(store);
+}

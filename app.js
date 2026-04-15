@@ -301,6 +301,13 @@ function submitCurrentAnswer() {
 
   const question = getCurrentQuestion();
   const rawInput = answerInput.value;
+
+  if (!normalizeAnswer(rawInput)) {
+    alert("回答を入力してください。");
+    focusAnswerInput();
+    return;
+  }
+
   const correct = isCorrectAnswer(rawInput, question);
 
   if (correct) {

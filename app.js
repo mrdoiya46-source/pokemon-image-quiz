@@ -1,4 +1,3 @@
-
 const state = {
   questions: [],
   mode: "fixed",
@@ -20,6 +19,7 @@ const questionCountInput = document.getElementById("questionCountInput");
 const questionCountHelp = document.getElementById("questionCountHelp");
 const totalQuestionCount = document.getElementById("totalQuestionCount");
 const reviewCount = document.getElementById("reviewCount");
+const reviewNotice = document.getElementById("reviewNotice");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const startButton = document.getElementById("startButton");
 
@@ -87,6 +87,8 @@ function bindEvents() {
   answerInput.addEventListener("keydown", event => {
     if (event.key === "Enter" && !event.isComposing) {
       event.preventDefault();
+      event.stopPropagation();
+
       if (state.answered) {
         goNextQuestion();
       } else {
@@ -105,6 +107,16 @@ function bindEvents() {
     if (!state.answered) {
       return;
     }
+
+    const activeElement = document.activeElement;
+    if (
+      activeElement === answerInput ||
+      activeElement === submitButton ||
+      activeElement === skipButton
+    ) {
+      return;
+    }
+
     event.preventDefault();
     goNextQuestion();
   });
@@ -134,11 +146,17 @@ function getAvailableQuestions(mode = state.mode, username = getCurrentUsername(
 function updateStartSummary() {
   const username = getCurrentUsername();
   const available = getAvailableQuestions(state.mode, username).length;
+
   totalQuestionCount.textContent = String(available);
   reviewCount.textContent = String(getReviewIds(username).length);
+
   questionCountHelp.textContent = available > 0
     ? `このモードで最大 ${available} 問まで出題できます`
     : "このモードで出題できる問題がありません";
+
+  if (reviewNotice) {
+    reviewNotice.classList.toggle("hidden", state.mode !== "review");
+  }
 }
 
 function buildSessionQuestions() {
@@ -186,7 +204,7 @@ function retrySameConfig() {
   }
 
   usernameInput.value = state.lastConfig.username === "default" ? "" : state.lastConfig.username;
-  questionCountInput.value = state.lastConfig.countValue;
+  questionCountInput.value = state.lastConfig.countValue || "20";
   state.mode = state.lastConfig.mode;
 
   modeButtons.forEach(btn => {

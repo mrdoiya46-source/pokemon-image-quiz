@@ -545,7 +545,7 @@ function getRegionLabel(region) {
     case "kalos":
       return "カロス";
     case "alola":
-      return "アローラ";
+      return "アローラ+α";
     case "galar":
       return "ガラル";
     case "hisui":

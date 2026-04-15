@@ -1,4 +1,3 @@
-
 function escapeHtml(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -17,7 +16,11 @@ function normalizeAnswer(value) {
 }
 
 function getAcceptedAnswers(question) {
-  const base = [question.answer, ...(Array.isArray(question.aliases) ? question.aliases : [])];
+  const base = [
+    question.answer,
+    ...(Array.isArray(question.aliases) ? question.aliases : [])
+  ];
+
   return [...new Set(base.map(normalizeAnswer).filter(Boolean))];
 }
 

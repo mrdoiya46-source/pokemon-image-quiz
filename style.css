@@ -35,7 +35,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -87,7 +88,8 @@ h2 {
   font-weight: 700;
 }
 
-.field input {
+.field input,
+.field select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -97,7 +99,14 @@ h2 {
   font-size: 1.05rem;
 }
 
-.field input:focus {
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.field input:focus,
+.field select:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(51, 103, 227, 0.12);
 }

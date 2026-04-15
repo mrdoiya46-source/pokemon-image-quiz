@@ -1,19 +1,48 @@
-
 const STORAGE_KEY = "pokemonImageQuiz.v2";
+
+function migrateLegacyStore(parsed) {
+  if (parsed && parsed.questions && typeof parsed.questions === "object") {
+    return { questions: parsed.questions };
+  }
+
+  if (parsed && parsed.users && typeof parsed.users === "object") {
+    if (
+      parsed.users.default &&
+      parsed.users.default.questions &&
+      typeof parsed.users.default.questions === "object"
+    ) {
+      return { questions: parsed.users.default.questions };
+    }
+
+    const firstUser = Object.values(parsed.users).find(
+      user => user && user.questions && typeof user.questions === "object"
+    );
+
+    if (firstUser) {
+      return { questions: firstUser.questions };
+    }
+  }
+
+  return { questions: {} };
+}
 
 function loadStore() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
-      return { users: {} };
+      return { questions: {} };
     }
+
     const parsed = JSON.parse(raw);
-    if (!parsed.users || typeof parsed.users !== "object") {
-      return { users: {} };
+    const migrated = migrateLegacyStore(parsed);
+
+    if (JSON.stringify(parsed) !== JSON.stringify(migrated)) {
+      saveStore(migrated);
     }
-    return parsed;
+
+    return migrated;
   } catch {
-    return { users: {} };
+    return { questions: {} };
   }
 }
 
@@ -21,47 +50,29 @@ function saveStore(store) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
 }
 
-function normalizeUsername(username) {
-  const value = String(username || "").trim();
-  return value || "default";
-}
-
-function ensureUserRecord(username) {
+function getQuestionRecord(questionId) {
   const store = loadStore();
-  const key = normalizeUsername(username);
-
-  if (!store.users[key]) {
-    store.users[key] = {
-      questions: {}
-    };
-    saveStore(store);
-  }
-
-  return store.users[key];
+  return store.questions[questionId] || {
+    wrongCount: 0,
+    correctCount: 0,
+    lastWrongInput: "",
+    lastAnsweredAt: "",
+    needsReview: false
+  };
 }
 
-function getUserRecord(username) {
+function getReviewIds() {
   const store = loadStore();
-  return store.users[normalizeUsername(username)] || { questions: {} };
-}
-
-function getReviewIds(username) {
-  const user = getUserRecord(username);
-  return Object.entries(user.questions)
+  return Object.entries(store.questions)
     .filter(([, record]) => record && record.needsReview)
     .map(([id]) => id);
 }
 
-function recordQuestionResult(username, questionId, isCorrect, rawInput) {
+function recordQuestionResult(questionId, isCorrect, rawInput) {
   const store = loadStore();
-  const key = normalizeUsername(username);
 
-  if (!store.users[key]) {
-    store.users[key] = { questions: {} };
-  }
-
-  if (!store.users[key].questions[questionId]) {
-    store.users[key].questions[questionId] = {
+  if (!store.questions[questionId]) {
+    store.questions[questionId] = {
       wrongCount: 0,
       correctCount: 0,
       lastWrongInput: "",
@@ -70,7 +81,7 @@ function recordQuestionResult(username, questionId, isCorrect, rawInput) {
     };
   }
 
-  const record = store.users[key].questions[questionId];
+  const record = store.questions[questionId];
   record.lastAnsweredAt = new Date().toISOString();
 
   if (isCorrect) {
@@ -85,9 +96,6 @@ function recordQuestionResult(username, questionId, isCorrect, rawInput) {
   saveStore(store);
 }
 
-function clearUserProgress(username) {
-  const store = loadStore();
-  const key = normalizeUsername(username);
-  delete store.users[key];
-  saveStore(store);
+function clearProgress() {
+  saveStore({ questions: {} });
 }

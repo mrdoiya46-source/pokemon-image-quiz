@@ -15,11 +15,6 @@
     <main class="card" id="startScreen">
       <h2>開始設定</h2>
 
-      <label class="field">
-        <span>ユーザー名</span>
-        <input id="usernameInput" type="text" placeholder="例: sana" maxlength="30">
-      </label>
-
       <div class="field">
         <span>出題モード</span>
         <div class="segmented">
@@ -28,6 +23,23 @@
           <button type="button" class="mode-button" data-mode="review">復習</button>
         </div>
       </div>
+
+      <label class="field">
+        <span>地方</span>
+        <select id="regionSelect">
+          <option value="all">全地方</option>
+          <option value="kanto">カントー</option>
+          <option value="johto">ジョウト</option>
+          <option value="hoenn">ホウエン</option>
+          <option value="sinnoh">シンオウ</option>
+          <option value="unova">イッシュ</option>
+          <option value="kalos">カロス</option>
+          <option value="alola">アローラ</option>
+          <option value="galar">ガラル</option>
+          <option value="hisui">ヒスイ</option>
+          <option value="paldea">パルデア</option>
+        </select>
+      </label>
 
       <label class="field">
         <span>今回解く数</span>
@@ -49,13 +61,13 @@
           <div class="mini-value" id="totalQuestionCount">-</div>
         </div>
         <div class="mini-card">
-          <div class="mini-label">復習対象</div>
+          <div class="mini-label">この条件の復習対象</div>
           <div class="mini-value" id="reviewCount">-</div>
         </div>
       </div>
 
       <div class="notice hidden" id="reviewNotice">
-        復習モードでは、その端末・そのユーザー名で過去に誤答した問題だけが出題されます。
+        復習モードでは、過去に誤答した問題だけが出題されます。
       </div>
 
       <div class="actions">
@@ -66,7 +78,7 @@
     <main class="card hidden" id="quizScreen">
       <div class="quiz-head">
         <div>
-          <div class="status-line" id="modeLabel">固定順</div>
+          <div class="status-line" id="modeLabel">固定順 / 全地方</div>
           <div class="progress" id="progressText">1 / 10</div>
         </div>
         <div class="stats">
@@ -122,7 +134,7 @@
           <div class="mini-value" id="resultRate">0%</div>
         </div>
         <div class="mini-card">
-          <div class="mini-label">復習対象残数</div>
+          <div class="mini-label">この条件の復習対象残数</div>
           <div class="mini-value" id="resultReviewCount">0</div>
         </div>
       </div>

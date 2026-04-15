@@ -5,7 +5,8 @@
     "answer": "リザードン",
     "aliases": [],
     "enabled": true,
-    "note": ""
+    "region": "kanto",
+    "tags": []
   },
   {
     "id": "0029",
@@ -13,7 +14,8 @@
     "answer": "ニドラン♀",
     "aliases": [],
     "enabled": true,
-    "note": ""
+    "region": "kanto",
+    "tags": []
   },
   {
     "id": "0032",
@@ -21,18 +23,20 @@
     "answer": "ニドラン♂",
     "aliases": [],
     "enabled": true,
-    "note": ""
+    "region": "kanto",
+    "tags": []
   },
   {
-    "id": "0052a",
-    "image": "images/0052-Normal.png",
+    "id": "0052",
+    "image": "images/0052.png",
     "answer": "ニャース",
     "aliases": [],
     "enabled": true,
-    "note": ""
+    "region": "kanto",
+    "tags": []
   },
   {
-    "id": "0052b",
+    "id": "0052-Alola",
     "image": "images/0052-Alola.png",
     "answer": "ニャース　アローラのすがた",
     "aliases": [
@@ -43,10 +47,11 @@
       "ニャース"
     ],
     "enabled": true,
-    "note": ""
+    "region": "alola",
+    "tags": []
   },
   {
-    "id": "0052c",
+    "id": "0052-Galar",
     "image": "images/0052-Galar.png",
     "answer": "ニャース　ガラルのすがた",
     "aliases": [
@@ -57,11 +62,12 @@
       "ニャース"
     ],
     "enabled": true,
-    "note": ""
+    "region": "galar",
+    "tags": []
   },
   {
-    "id": "0646a",
-    "image": "images/0646-Normal.png",
+    "id": "0646",
+    "image": "images/0646.png",
     "answer": "キュレム",
     "aliases": [
       "キュレム（キュレムのすがた）",
@@ -69,10 +75,11 @@
       "キュレム　キュレムのすがた"
     ],
     "enabled": true,
-    "note": ""
+    "region": "unova",
+    "tags": []
   },
   {
-    "id": "646b",
+    "id": "0646-White",
     "image": "images/0646-White.png",
     "answer": "ホワイトキュレム",
     "aliases": [
@@ -81,10 +88,11 @@
       "キュレム　ホワイトキュレム"
     ],
     "enabled": true,
-    "note": ""
+    "region": "unova",
+    "tags": []
   },
   {
-    "id": "646c",
+    "id": "0646-Black",
     "image": "images/0646-Black.png",
     "answer": "ブラックキュレム",
     "aliases": [
@@ -93,7 +101,8 @@
       "キュレム　ブラックキュレム"
     ],
     "enabled": true,
-    "note": ""
+    "region": "unova",
+    "tags": []
   },
   {
     "id": "0772",
@@ -103,6 +112,7 @@
       "タイプ:ヌル"
     ],
     "enabled": true,
-    "note": ""
+    "region": "alola",
+    "tags": []
   }
 ]

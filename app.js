@@ -1,7 +1,7 @@
 const state = {
   questions: [],
   mode: "fixed",
-  username: "default",
+  region: "all",
   sessionQuestions: [],
   currentIndex: 0,
   correct: 0,
@@ -14,12 +14,12 @@ const startScreen = document.getElementById("startScreen");
 const quizScreen = document.getElementById("quizScreen");
 const resultScreen = document.getElementById("resultScreen");
 
-const usernameInput = document.getElementById("usernameInput");
 const questionCountInput = document.getElementById("questionCountInput");
 const questionCountHelp = document.getElementById("questionCountHelp");
 const totalQuestionCount = document.getElementById("totalQuestionCount");
 const reviewCount = document.getElementById("reviewCount");
 const reviewNotice = document.getElementById("reviewNotice");
+const regionSelect = document.getElementById("regionSelect");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const startButton = document.getElementById("startButton");
 
@@ -73,7 +73,11 @@ function bindEvents() {
     });
   });
 
-  usernameInput.addEventListener("input", updateStartSummary);
+  regionSelect.addEventListener("change", () => {
+    state.region = regionSelect.value;
+    updateStartSummary();
+  });
+
   questionCountInput.addEventListener("input", sanitizeQuestionCountInput);
 
   startButton.addEventListener("click", startSession);
@@ -112,7 +116,8 @@ function bindEvents() {
     if (
       activeElement === answerInput ||
       activeElement === submitButton ||
-      activeElement === skipButton
+      activeElement === skipButton ||
+      activeElement === nextButton
     ) {
       return;
     }
@@ -131,28 +136,44 @@ function sanitizeQuestionCountInput() {
   questionCountInput.value = String(number);
 }
 
-function getCurrentUsername() {
-  return normalizeUsername(usernameInput.value);
+function getCurrentRegion() {
+  return regionSelect.value || "all";
 }
 
-function getAvailableQuestions(mode = state.mode, username = getCurrentUsername()) {
-  if (mode === "review") {
-    const reviewIds = new Set(getReviewIds(username));
-    return state.questions.filter(q => reviewIds.has(q.id));
+function matchesRegion(question, region) {
+  if (region === "all") {
+    return true;
   }
-  return [...state.questions];
+  return question.region === region;
+}
+
+function getReviewIdsForRegion(region = getCurrentRegion()) {
+  const reviewSet = new Set(getReviewIds());
+  return state.questions
+    .filter(q => reviewSet.has(q.id) && matchesRegion(q, region))
+    .map(q => q.id);
+}
+
+function getAvailableQuestions(mode = state.mode, region = getCurrentRegion()) {
+  if (mode === "review") {
+    const reviewSet = new Set(getReviewIds());
+    return state.questions.filter(q => reviewSet.has(q.id) && matchesRegion(q, region));
+  }
+
+  return state.questions.filter(q => matchesRegion(q, region));
 }
 
 function updateStartSummary() {
-  const username = getCurrentUsername();
-  const available = getAvailableQuestions(state.mode, username).length;
+  const currentRegion = getCurrentRegion();
+  const available = getAvailableQuestions(state.mode, currentRegion).length;
+  const reviewAvailable = getReviewIdsForRegion(currentRegion).length;
 
   totalQuestionCount.textContent = String(available);
-  reviewCount.textContent = String(getReviewIds(username).length);
+  reviewCount.textContent = String(reviewAvailable);
 
   questionCountHelp.textContent = available > 0
-    ? `このモードで最大 ${available} 問まで出題できます`
-    : "このモードで出題できる問題がありません";
+    ? `この条件で最大 ${available} 問まで出題できます`
+    : "この条件で出題できる問題がありません";
 
   if (reviewNotice) {
     reviewNotice.classList.toggle("hidden", state.mode !== "review");
@@ -160,8 +181,8 @@ function updateStartSummary() {
 }
 
 function buildSessionQuestions() {
-  const username = getCurrentUsername();
-  let pool = getAvailableQuestions(state.mode, username);
+  const region = getCurrentRegion();
+  let pool = getAvailableQuestions(state.mode, region);
 
   if (state.mode === "random") {
     pool = shuffleArray(pool);
@@ -176,15 +197,15 @@ function buildSessionQuestions() {
 }
 
 function startSession() {
-  state.username = getCurrentUsername();
+  state.region = getCurrentRegion();
   state.sessionQuestions = buildSessionQuestions();
   state.currentIndex = 0;
   state.correct = 0;
   state.wrong = 0;
   state.answered = false;
   state.lastConfig = {
-    username: state.username,
     mode: state.mode,
+    region: state.region,
     countValue: questionCountInput.value.trim()
   };
 
@@ -203,9 +224,10 @@ function retrySameConfig() {
     return;
   }
 
-  usernameInput.value = state.lastConfig.username === "default" ? "" : state.lastConfig.username;
   questionCountInput.value = state.lastConfig.countValue || "20";
   state.mode = state.lastConfig.mode;
+  state.region = state.lastConfig.region || "all";
+  regionSelect.value = state.region;
 
   modeButtons.forEach(btn => {
     btn.classList.toggle("active", btn.dataset.mode === state.mode);
@@ -246,7 +268,7 @@ function renderQuestion() {
   questionImage.src = question.image;
   questionImage.alt = question.answer;
 
-  modeLabel.textContent = getModeLabel(state.mode);
+  modeLabel.textContent = `${getModeLabel(state.mode)} / ${getRegionLabel(state.region)}`;
   progressText.textContent = `${state.currentIndex + 1} / ${state.sessionQuestions.length}`;
   correctStat.textContent = `正解 ${state.correct}`;
   wrongStat.textContent = `誤答 ${state.wrong}`;
@@ -287,7 +309,7 @@ function submitCurrentAnswer() {
     state.wrong += 1;
   }
 
-  recordQuestionResult(state.username, question.id, correct, rawInput);
+  recordQuestionResult(question.id, correct, rawInput);
   showAnswerResult(correct, question, rawInput, false);
 }
 
@@ -298,7 +320,7 @@ function skipCurrentQuestion() {
 
   const question = getCurrentQuestion();
   state.wrong += 1;
-  recordQuestionResult(state.username, question.id, false, "");
+  recordQuestionResult(question.id, false, "");
   showAnswerResult(false, question, "", true);
 }
 
@@ -347,16 +369,17 @@ function renderResult() {
 
   const total = state.sessionQuestions.length;
   const rate = total > 0 ? Math.round((state.correct / total) * 100) : 0;
+  const remainingReviewCount = getReviewIdsForRegion(state.region).length;
 
   resultCorrect.textContent = String(state.correct);
   resultWrong.textContent = String(state.wrong);
   resultRate.textContent = `${rate}%`;
-  resultReviewCount.textContent = String(getReviewIds(state.username).length);
+  resultReviewCount.textContent = String(remainingReviewCount);
 
   if (state.mode === "review") {
-    resultMessage.textContent = "復習モードが終了しました。残っている苦手問題は次回も復習できます。";
+    resultMessage.textContent = `${getRegionLabel(state.region)}の復習モードが終了しました。残っている苦手問題は次回も復習できます。`;
   } else {
-    resultMessage.textContent = "テストが終了しました。誤答した問題は復習モードに追加されています。";
+    resultMessage.textContent = `テストが終了しました。誤答した問題は${getRegionLabel(state.region)}の復習対象に追加されています。`;
   }
 }
 
@@ -368,5 +391,32 @@ function getModeLabel(mode) {
       return "復習";
     default:
       return "固定順";
+  }
+}
+
+function getRegionLabel(region) {
+  switch (region) {
+    case "kanto":
+      return "カントー";
+    case "johto":
+      return "ジョウト";
+    case "hoenn":
+      return "ホウエン";
+    case "sinnoh":
+      return "シンオウ";
+    case "unova":
+      return "イッシュ";
+    case "kalos":
+      return "カロス";
+    case "alola":
+      return "アローラ";
+    case "galar":
+      return "ガラル";
+    case "hisui":
+      return "ヒスイ";
+    case "paldea":
+      return "パルデア";
+    default:
+      return "全地方";
   }
 }

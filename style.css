@@ -77,6 +77,11 @@ h2 {
   font-size: 1.15rem;
 }
 
+h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
 .field {
   display: block;
   margin-bottom: 16px;
@@ -206,6 +211,21 @@ h2 {
   color: #42506a;
   margin-bottom: 16px;
   line-height: 1.6;
+}
+
+.debug-panel {
+  border: 1px dashed #c7d3ea;
+  background: #fbfcff;
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.debug-text {
+  margin: 0 0 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.94rem;
 }
 
 .quiz-head {

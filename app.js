@@ -7,7 +7,10 @@ const state = {
   correct: 0,
   wrong: 0,
   answered: false,
-  lastConfig: null
+  lastConfig: null,
+  debugMode: false,
+  isDebugSession: false,
+  debugQuestionId: null
 };
 
 const startScreen = document.getElementById("startScreen");
@@ -22,6 +25,11 @@ const reviewNotice = document.getElementById("reviewNotice");
 const regionSelect = document.getElementById("regionSelect");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const startButton = document.getElementById("startButton");
+
+const debugPanel = document.getElementById("debugPanel");
+const debugQuestionInput = document.getElementById("debugQuestionInput");
+const debugQuestionList = document.getElementById("debugQuestionList");
+const debugStartButton = document.getElementById("debugStartButton");
 
 const modeLabel = document.getElementById("modeLabel");
 const progressText = document.getElementById("progressText");
@@ -49,8 +57,10 @@ const backToStartButton = document.getElementById("backToStartButton");
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
+  state.debugMode = hasDebugMode();
   await loadQuestions();
   bindEvents();
+  setupDebugPanel();
   updateStartSummary();
 }
 
@@ -61,6 +71,11 @@ async function loadQuestions() {
   }
   const data = await response.json();
   state.questions = data.filter(q => q.enabled !== false);
+}
+
+function hasDebugMode() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("debug") === "1";
 }
 
 function bindEvents() {
@@ -124,6 +139,48 @@ function bindEvents() {
 
     event.preventDefault();
     goNextQuestion();
+  });
+
+  if (debugStartButton) {
+    debugStartButton.addEventListener("click", startDebugSessionFromInput);
+  }
+
+  if (debugQuestionInput) {
+    debugQuestionInput.addEventListener("keydown", event => {
+      if (event.key === "Enter" && !event.isComposing) {
+        event.preventDefault();
+        startDebugSessionFromInput();
+      }
+    });
+  }
+}
+
+function setupDebugPanel() {
+  if (!debugPanel) {
+    return;
+  }
+
+  debugPanel.classList.toggle("hidden", !state.debugMode);
+
+  if (!state.debugMode) {
+    return;
+  }
+
+  populateDebugQuestionList();
+}
+
+function populateDebugQuestionList() {
+  if (!debugQuestionList) {
+    return;
+  }
+
+  debugQuestionList.innerHTML = "";
+
+  state.questions.forEach(question => {
+    const option = document.createElement("option");
+    option.value = question.id;
+    option.label = `${question.answer} / ${getRegionLabel(question.region)}`;
+    debugQuestionList.appendChild(option);
   });
 }
 
@@ -197,6 +254,8 @@ function buildSessionQuestions() {
 }
 
 function startSession() {
+  state.isDebugSession = false;
+  state.debugQuestionId = null;
   state.region = getCurrentRegion();
   state.sessionQuestions = buildSessionQuestions();
   state.currentIndex = 0;
@@ -204,6 +263,7 @@ function startSession() {
   state.wrong = 0;
   state.answered = false;
   state.lastConfig = {
+    kind: "normal",
     mode: state.mode,
     region: state.region,
     countValue: questionCountInput.value.trim()
@@ -218,9 +278,57 @@ function startSession() {
   renderQuestion();
 }
 
+function startDebugSessionFromInput() {
+  if (!state.debugMode) {
+    return;
+  }
+
+  const rawId = String(debugQuestionInput?.value || "").trim();
+  if (!rawId) {
+    alert("問題IDを入力してください。");
+    debugQuestionInput?.focus();
+    return;
+  }
+
+  const normalized = rawId.toLowerCase();
+  const question = state.questions.find(q => String(q.id).toLowerCase() === normalized);
+
+  if (!question) {
+    alert("指定した問題IDが見つかりません。");
+    debugQuestionInput?.focus();
+    debugQuestionInput?.select();
+    return;
+  }
+
+  state.isDebugSession = true;
+  state.debugQuestionId = question.id;
+  state.mode = "fixed";
+  state.region = question.region || "all";
+  state.sessionQuestions = [question];
+  state.currentIndex = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.answered = false;
+  state.lastConfig = {
+    kind: "debug",
+    questionId: question.id
+  };
+
+  showScreen("quiz");
+  renderQuestion();
+}
+
 function retrySameConfig() {
   if (!state.lastConfig) {
     backToStart();
+    return;
+  }
+
+  if (state.lastConfig.kind === "debug") {
+    if (debugQuestionInput) {
+      debugQuestionInput.value = state.lastConfig.questionId;
+    }
+    startDebugSessionFromInput();
     return;
   }
 
@@ -238,6 +346,8 @@ function retrySameConfig() {
 }
 
 function backToStart() {
+  state.isDebugSession = false;
+  state.debugQuestionId = null;
   showScreen("start");
   updateStartSummary();
 }
@@ -268,7 +378,12 @@ function renderQuestion() {
   questionImage.src = question.image;
   questionImage.alt = question.answer;
 
-  modeLabel.textContent = `${getModeLabel(state.mode)} / ${getRegionLabel(state.region)}`;
+  if (state.isDebugSession) {
+    modeLabel.textContent = `デバッグ / ${question.id}`;
+  } else {
+    modeLabel.textContent = `${getModeLabel(state.mode)} / ${getRegionLabel(state.region)}`;
+  }
+
   progressText.textContent = `${state.currentIndex + 1} / ${state.sessionQuestions.length}`;
   correctStat.textContent = `正解 ${state.correct}`;
   wrongStat.textContent = `誤答 ${state.wrong}`;
@@ -316,7 +431,10 @@ function submitCurrentAnswer() {
     state.wrong += 1;
   }
 
-  recordQuestionResult(question.id, correct, rawInput);
+  if (!state.isDebugSession) {
+    recordQuestionResult(question.id, correct, rawInput);
+  }
+
   showAnswerResult(correct, question, rawInput, false);
 }
 
@@ -327,7 +445,11 @@ function skipCurrentQuestion() {
 
   const question = getCurrentQuestion();
   state.wrong += 1;
-  recordQuestionResult(question.id, false, "");
+
+  if (!state.isDebugSession) {
+    recordQuestionResult(question.id, false, "");
+  }
+
   showAnswerResult(false, question, "", true);
 }
 
@@ -376,12 +498,19 @@ function renderResult() {
 
   const total = state.sessionQuestions.length;
   const rate = total > 0 ? Math.round((state.correct / total) * 100) : 0;
-  const remainingReviewCount = getReviewIdsForRegion(state.region).length;
+  const remainingReviewCount = state.isDebugSession
+    ? getReviewIdsForRegion(state.region).length
+    : getReviewIdsForRegion(state.region).length;
 
   resultCorrect.textContent = String(state.correct);
   resultWrong.textContent = String(state.wrong);
   resultRate.textContent = `${rate}%`;
   resultReviewCount.textContent = String(remainingReviewCount);
+
+  if (state.isDebugSession) {
+    resultMessage.textContent = `デバッグセッションが終了しました。問題ID: ${state.debugQuestionId}。このセッションの結果は復習記録に保存されていません。`;
+    return;
+  }
 
   if (state.mode === "review") {
     resultMessage.textContent = `${getRegionLabel(state.region)}の復習モードが終了しました。残っている苦手問題は次回も復習できます。`;

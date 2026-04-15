@@ -70,6 +70,33 @@
         復習モードでは、過去に誤答した問題だけが出題されます。
       </div>
 
+      <section class="debug-panel hidden" id="debugPanel">
+        <h3>デバッグ用 問題ジャンプ</h3>
+        <p class="debug-text">
+          問題IDを指定して、その1問だけを開きます。<br>
+          このセッションの結果は復習記録に保存されません。
+        </p>
+
+        <label class="field">
+          <span>問題ID</span>
+          <input
+            id="debugQuestionInput"
+            type="text"
+            list="debugQuestionList"
+            autocomplete="off"
+            placeholder="例: 0052-alola / 0646 / 0646-white"
+          >
+          <datalist id="debugQuestionList"></datalist>
+          <small class="help-text" id="debugHelpText">
+            `?debug=1` のときだけ表示されます。
+          </small>
+        </label>
+
+        <div class="actions">
+          <button id="debugStartButton" class="ghost-button">この問題を開く</button>
+        </div>
+      </section>
+
       <div class="actions">
         <button id="startButton" class="primary-button">開始する</button>
       </div>

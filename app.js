@@ -1,3 +1,16 @@
+const REGION_ORDER = [
+  "kanto",
+  "johto",
+  "hoenn",
+  "sinnoh",
+  "unova",
+  "kalos",
+  "alola",
+  "galar",
+  "hisui",
+  "paldea"
+];
+
 const state = {
   questions: [],
   mode: "fixed",
@@ -6,13 +19,16 @@ const state = {
   currentIndex: 0,
   correct: 0,
   wrong: 0,
+  skipped: 0,
   answered: false,
   lastConfig: null,
   debugMode: false,
   isDebugSession: false,
   debugQuestionId: null,
   questionCountMode: "auto",
-  manualRequestedCount: null
+  manualRequestedCount: null,
+  sessionAvailableCountAtStart: 0,
+  sessionExcludeSolvedAtStart: false
 };
 
 const startScreen = document.getElementById("startScreen");
@@ -59,6 +75,11 @@ const resultReviewCount = document.getElementById("resultReviewCount");
 const resultMessage = document.getElementById("resultMessage");
 const retrySameModeButton = document.getElementById("retrySameModeButton");
 const backToStartButton = document.getElementById("backToStartButton");
+
+const achievementArea = document.getElementById("achievementArea");
+const secretAchievementBox = document.getElementById("secretAchievementBox");
+const regionAchievementBox = document.getElementById("regionAchievementBox");
+const completedRegionList = document.getElementById("completedRegionList");
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -360,10 +381,13 @@ function startSession() {
   state.isDebugSession = false;
   state.debugQuestionId = null;
   state.region = getCurrentRegion();
+  state.sessionAvailableCountAtStart = getAvailableQuestions(state.mode, state.region).length;
+  state.sessionExcludeSolvedAtStart = isExcludeSolvedEnabled();
   state.sessionQuestions = buildSessionQuestions();
   state.currentIndex = 0;
   state.correct = 0;
   state.wrong = 0;
+  state.skipped = 0;
   state.answered = false;
   state.lastConfig = {
     kind: "normal",
@@ -409,10 +433,13 @@ function startDebugSessionFromInput() {
   state.debugQuestionId = question.id;
   state.mode = "fixed";
   state.region = question.region || "all";
+  state.sessionAvailableCountAtStart = 1;
+  state.sessionExcludeSolvedAtStart = false;
   state.sessionQuestions = [question];
   state.currentIndex = 0;
   state.correct = 0;
   state.wrong = 0;
+  state.skipped = 0;
   state.answered = false;
   state.lastConfig = {
     kind: "debug",
@@ -561,6 +588,7 @@ function skipCurrentQuestion() {
 
   const question = getCurrentQuestion();
   state.wrong += 1;
+  state.skipped += 1;
 
   if (!state.isDebugSession) {
     recordQuestionResult(question.id, false, "");
@@ -609,6 +637,109 @@ function goNextQuestion() {
   renderQuestion();
 }
 
+function hideAchievementDisplay() {
+  achievementArea.classList.add("hidden");
+  secretAchievementBox.classList.add("hidden");
+  regionAchievementBox.classList.add("hidden");
+  secretAchievementBox.innerHTML = "";
+  completedRegionList.innerHTML = "";
+}
+
+function getNewlyCompletedRegions() {
+  const newlyCompleted = [];
+  const records = getAllQuestionRecords();
+
+  REGION_ORDER.forEach(region => {
+    if (hasCompletedRegion(region)) {
+      return;
+    }
+
+    const regionQuestions = state.questions.filter(question => question.region === region);
+    if (regionQuestions.length === 0) {
+      return;
+    }
+
+    const isComplete = regionQuestions.every(question => {
+      const record = records[question.id];
+      return (record?.correctCount || 0) >= 1;
+    });
+
+    if (isComplete && markRegionCompleted(region)) {
+      newlyCompleted.push(region);
+    }
+  });
+
+  return newlyCompleted;
+}
+
+function hasPerfectAllRegionClear() {
+  if (state.isDebugSession) {
+    return false;
+  }
+
+  if (state.mode === "review") {
+    return false;
+  }
+
+  if (state.region !== "all") {
+    return false;
+  }
+
+  if (state.sessionExcludeSolvedAtStart) {
+    return false;
+  }
+
+  if (state.sessionAvailableCountAtStart <= 0) {
+    return false;
+  }
+
+  if (state.sessionQuestions.length !== state.sessionAvailableCountAtStart) {
+    return false;
+  }
+
+  if (state.correct !== state.sessionQuestions.length) {
+    return false;
+  }
+
+  if (state.wrong !== 0) {
+    return false;
+  }
+
+  if (state.skipped !== 0) {
+    return false;
+  }
+
+  return true;
+}
+
+function renderAchievements(newlyCompletedRegions, hasSecretAchievement) {
+  hideAchievementDisplay();
+
+  if (!hasSecretAchievement && newlyCompletedRegions.length === 0) {
+    return;
+  }
+
+  achievementArea.classList.remove("hidden");
+
+  if (hasSecretAchievement) {
+    secretAchievementBox.classList.remove("hidden");
+    secretAchievementBox.innerHTML = `
+      <div class="achievement-badge">SECRET</div>
+      <div class="achievement-title">全地方完全制覇！！</div>
+      <div class="achievement-text">
+        1回のテストで全問連続正解を達成しました。おめでとう！！
+      </div>
+    `;
+  }
+
+  if (newlyCompletedRegions.length > 0) {
+    regionAchievementBox.classList.remove("hidden");
+    completedRegionList.innerHTML = newlyCompletedRegions
+      .map(region => `<li>${escapeHtml(getRegionLabel(region))}地方コンプリート！</li>`)
+      .join("");
+  }
+}
+
 function renderResult() {
   showScreen("result");
 
@@ -622,9 +753,14 @@ function renderResult() {
   resultReviewCount.textContent = String(remainingReviewCount);
 
   if (state.isDebugSession) {
+    hideAchievementDisplay();
     resultMessage.textContent = `デバッグセッションが終了しました。問題ID: ${state.debugQuestionId}。このセッションの結果は復習記録に保存されていません。`;
     return;
   }
+
+  const newlyCompletedRegions = getNewlyCompletedRegions();
+  const hasSecretAchievement = hasPerfectAllRegionClear();
+  renderAchievements(newlyCompletedRegions, hasSecretAchievement);
 
   if (state.mode === "review") {
     resultMessage.textContent = `${getRegionLabel(state.region)}の復習モードが終了しました。残っている苦手問題は次回も復習できます。`;

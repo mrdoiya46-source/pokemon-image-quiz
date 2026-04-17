@@ -11,8 +11,13 @@ function createEmptyQuestionRecord() {
   };
 }
 
+function createEmptyAchievements() {
+  return {
+    completedRegions: {}
+  };
+}
+
 function normalizeQuestionRecord(record) {
-  const base = createEmptyQuestionRecord();
   const source = record && typeof record === "object" ? record : {};
 
   return {
@@ -25,9 +30,29 @@ function normalizeQuestionRecord(record) {
   };
 }
 
+function normalizeAchievements(achievements) {
+  const source = achievements && typeof achievements === "object" ? achievements : {};
+  const completedRegions =
+    source.completedRegions && typeof source.completedRegions === "object"
+      ? source.completedRegions
+      : {};
+
+  const normalizedCompletedRegions = {};
+  Object.entries(completedRegions).forEach(([region, value]) => {
+    normalizedCompletedRegions[region] = Boolean(value);
+  });
+
+  return {
+    completedRegions: normalizedCompletedRegions
+  };
+}
+
 function migrateLegacyStore(parsed) {
   if (parsed && parsed.questions && typeof parsed.questions === "object") {
-    return { questions: parsed.questions };
+    return {
+      questions: parsed.questions,
+      achievements: parsed.achievements
+    };
   }
 
   if (parsed && parsed.users && typeof parsed.users === "object") {
@@ -36,7 +61,10 @@ function migrateLegacyStore(parsed) {
       parsed.users.default.questions &&
       typeof parsed.users.default.questions === "object"
     ) {
-      return { questions: parsed.users.default.questions };
+      return {
+        questions: parsed.users.default.questions,
+        achievements: parsed.achievements
+      };
     }
 
     const firstUser = Object.values(parsed.users).find(
@@ -44,11 +72,17 @@ function migrateLegacyStore(parsed) {
     );
 
     if (firstUser) {
-      return { questions: firstUser.questions };
+      return {
+        questions: firstUser.questions,
+        achievements: parsed.achievements
+      };
     }
   }
 
-  return { questions: {} };
+  return {
+    questions: {},
+    achievements: createEmptyAchievements()
+  };
 }
 
 function normalizeStoreShape(store) {
@@ -62,14 +96,20 @@ function normalizeStoreShape(store) {
     questions[questionId] = normalizeQuestionRecord(record);
   });
 
-  return { questions };
+  return {
+    questions,
+    achievements: normalizeAchievements(store?.achievements)
+  };
 }
 
 function loadStore() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
-      return { questions: {} };
+      return {
+        questions: {},
+        achievements: createEmptyAchievements()
+      };
     }
 
     const parsed = JSON.parse(raw);
@@ -81,7 +121,10 @@ function loadStore() {
 
     return migrated;
   } catch {
-    return { questions: {} };
+    return {
+      questions: {},
+      achievements: createEmptyAchievements()
+    };
   }
 }
 
@@ -142,6 +185,35 @@ function recordQuestionResult(questionId, isCorrect, rawInput) {
   saveStore(store);
 }
 
+function getCompletedRegions() {
+  return loadStore().achievements.completedRegions;
+}
+
+function hasCompletedRegion(region) {
+  const completedRegions = getCompletedRegions();
+  return Boolean(completedRegions[region]);
+}
+
+function markRegionCompleted(region) {
+  if (!region) {
+    return false;
+  }
+
+  const store = loadStore();
+  store.achievements = normalizeAchievements(store.achievements);
+
+  if (store.achievements.completedRegions[region]) {
+    return false;
+  }
+
+  store.achievements.completedRegions[region] = true;
+  saveStore(store);
+  return true;
+}
+
 function clearProgress() {
-  saveStore({ questions: {} });
+  saveStore({
+    questions: {},
+    achievements: createEmptyAchievements()
+  });
 }

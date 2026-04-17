@@ -854,7 +854,9 @@ function renderAchievements(regions, hasSecretAchievement) {
       <div class="achievement-badge">SECRET</div>
       <div class="achievement-title">全地方完全制覇！！</div>
       <div class="achievement-text">
-        1回のテストで全問連続正解を達成しました。おめでとう！！
+        1回のテストで全問連続正解！？
+        .....え、暇なの？
+        とりあえずスクショして河合に送ってみてください。
       </div>
     `;
   }

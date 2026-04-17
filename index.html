@@ -104,13 +104,62 @@
             placeholder="例: 0052-alola / 0646 / 0646-white"
           >
           <datalist id="debugQuestionList"></datalist>
-          <small class="help-text" id="debugHelpText">
+          <small class="help-text">
             `?debug=1` のときだけ表示されます。
           </small>
         </label>
 
-        <div class="actions">
+        <div class="actions debug-actions">
           <button id="debugStartButton" class="ghost-button">この問題を開く</button>
+        </div>
+
+        <div class="debug-divider"></div>
+
+        <h3>達成メッセージ表示テスト</h3>
+        <p class="debug-text">
+          以下は表示確認専用です。達成状況や復習記録は変更されません。
+        </p>
+
+        <div class="debug-grid-2">
+          <label class="field">
+            <span>地方A</span>
+            <select id="debugAchievementRegionA">
+              <option value="kanto">カントー</option>
+              <option value="johto">ジョウト</option>
+              <option value="hoenn">ホウエン</option>
+              <option value="sinnoh">シンオウ</option>
+              <option value="unova">イッシュ</option>
+              <option value="kalos">カロス</option>
+              <option value="alola">アローラ</option>
+              <option value="galar">ガラル</option>
+              <option value="hisui">ヒスイ</option>
+              <option value="paldea">パルデア</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>地方B（同時達成用）</span>
+            <select id="debugAchievementRegionB">
+              <option value="">なし</option>
+              <option value="kanto">カントー</option>
+              <option value="johto">ジョウト</option>
+              <option value="hoenn">ホウエン</option>
+              <option value="sinnoh">シンオウ</option>
+              <option value="unova">イッシュ</option>
+              <option value="kalos">カロス</option>
+              <option value="alola">アローラ</option>
+              <option value="galar">ガラル</option>
+              <option value="hisui">ヒスイ</option>
+              <option value="paldea">パルデア</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="actions debug-actions-grid">
+          <button id="debugPreviewRegionButton" class="ghost-button">地方コンプリート表示</button>
+          <button id="debugPreviewMultiButton" class="ghost-button">同時達成表示</button>
+          <button id="debugPreviewSecretButton" class="ghost-button">隠し仕様表示</button>
+          <button id="debugPreviewAllButton" class="ghost-button">全部まとめて表示</button>
         </div>
       </section>
 
@@ -183,13 +232,14 @@
         </div>
       </div>
 
+      <div id="resultDebugNotice" class="debug-result-note hidden">
+        <span class="debug-result-badge">DEBUG</span>
+        <span id="resultDebugText">表示確認用のプレビューです。記録は変更されません。</span>
+      </div>
+
       <div id="achievementArea" class="achievement-stack hidden">
         <div id="secretAchievementBox" class="achievement-card secret hidden"></div>
-
-        <div id="regionAchievementBox" class="achievement-card hidden">
-          <div class="achievement-title">新しく達成した地方コンプリート</div>
-          <ul id="completedRegionList" class="achievement-list"></ul>
-        </div>
+        <div id="regionAchievementBox" class="achievement-card hidden"></div>
       </div>
 
       <div class="notice" id="resultMessage"></div>

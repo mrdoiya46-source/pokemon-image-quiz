@@ -25,6 +25,7 @@ const state = {
   debugMode: false,
   isDebugSession: false,
   debugQuestionId: null,
+  isAchievementPreview: false,
   questionCountMode: "auto",
   manualRequestedCount: null,
   sessionAvailableCountAtStart: 0,
@@ -53,6 +54,13 @@ const debugQuestionInput = document.getElementById("debugQuestionInput");
 const debugQuestionList = document.getElementById("debugQuestionList");
 const debugStartButton = document.getElementById("debugStartButton");
 
+const debugAchievementRegionA = document.getElementById("debugAchievementRegionA");
+const debugAchievementRegionB = document.getElementById("debugAchievementRegionB");
+const debugPreviewRegionButton = document.getElementById("debugPreviewRegionButton");
+const debugPreviewMultiButton = document.getElementById("debugPreviewMultiButton");
+const debugPreviewSecretButton = document.getElementById("debugPreviewSecretButton");
+const debugPreviewAllButton = document.getElementById("debugPreviewAllButton");
+
 const modeLabel = document.getElementById("modeLabel");
 const progressText = document.getElementById("progressText");
 const correctStat = document.getElementById("correctStat");
@@ -76,6 +84,8 @@ const resultMessage = document.getElementById("resultMessage");
 const retrySameModeButton = document.getElementById("retrySameModeButton");
 const backToStartButton = document.getElementById("backToStartButton");
 
+const resultDebugNotice = document.getElementById("resultDebugNotice");
+const resultDebugText = document.getElementById("resultDebugText");
 const achievementArea = document.getElementById("achievementArea");
 const secretAchievementBox = document.getElementById("secretAchievementBox");
 const regionAchievementBox = document.getElementById("regionAchievementBox");
@@ -197,6 +207,47 @@ function bindEvents() {
       }
     });
   }
+
+  if (debugPreviewRegionButton) {
+    debugPreviewRegionButton.addEventListener("click", () => {
+      openAchievementPreview({
+        regions: [debugAchievementRegionA.value],
+        secret: false
+      });
+    });
+  }
+
+  if (debugPreviewMultiButton) {
+    debugPreviewMultiButton.addEventListener("click", () => {
+      const regions = collectPreviewRegions(true);
+      if (!regions) {
+        return;
+      }
+      openAchievementPreview({
+        regions,
+        secret: false
+      });
+    });
+  }
+
+  if (debugPreviewSecretButton) {
+    debugPreviewSecretButton.addEventListener("click", () => {
+      openAchievementPreview({
+        regions: [],
+        secret: true
+      });
+    });
+  }
+
+  if (debugPreviewAllButton) {
+    debugPreviewAllButton.addEventListener("click", () => {
+      const regions = collectPreviewRegions(false);
+      openAchievementPreview({
+        regions,
+        secret: true
+      });
+    });
+  }
 }
 
 function setupDebugPanel() {
@@ -226,6 +277,49 @@ function populateDebugQuestionList() {
     option.label = `${question.answer} / ${getRegionLabel(question.region)}`;
     debugQuestionList.appendChild(option);
   });
+}
+
+function collectPreviewRegions(requireSecondRegion) {
+  const regionA = debugAchievementRegionA?.value || "";
+  const regionB = debugAchievementRegionB?.value || "";
+
+  const regions = [regionA];
+  if (regionB) {
+    regions.push(regionB);
+  }
+
+  const uniqueRegions = [...new Set(regions.filter(Boolean))];
+
+  if (requireSecondRegion && uniqueRegions.length < 2) {
+    alert("地方Aと異なる地方Bを選択してください。");
+    return null;
+  }
+
+  return uniqueRegions;
+}
+
+function openAchievementPreview({ regions = [], secret = false }) {
+  if (!state.debugMode) {
+    return;
+  }
+
+  state.isAchievementPreview = true;
+  state.isDebugSession = false;
+  state.debugQuestionId = null;
+
+  showScreen("result");
+
+  resultCorrect.textContent = "—";
+  resultWrong.textContent = "—";
+  resultRate.textContent = "—";
+  resultReviewCount.textContent = "—";
+
+  retrySameModeButton.classList.add("hidden");
+  resultDebugNotice.classList.remove("hidden");
+  resultDebugText.textContent = "DEBUG表示中：以下は達成メッセージの確認用です。記録は変更されません。";
+
+  renderAchievements(regions, secret);
+  resultMessage.textContent = "達成メッセージの表示確認用プレビューです。";
 }
 
 function handleQuestionCountInput() {
@@ -364,6 +458,10 @@ function updateStartSummary() {
   syncQuestionCountInput(available);
 }
 
+function snapshotCompletedRegions() {
+  return { ...getCompletedRegions() };
+}
+
 function buildSessionQuestions() {
   const region = getCurrentRegion();
   let pool = getAvailableQuestions(state.mode, region);
@@ -377,6 +475,8 @@ function buildSessionQuestions() {
 }
 
 function startSession() {
+  resetPreviewState();
+
   state.isDebugSession = false;
   state.debugQuestionId = null;
   state.region = getCurrentRegion();
@@ -410,6 +510,8 @@ function startDebugSessionFromInput() {
   if (!state.debugMode) {
     return;
   }
+
+  resetPreviewState();
 
   const rawId = String(debugQuestionInput?.value || "").trim();
   if (!rawId) {
@@ -482,7 +584,15 @@ function retrySameConfig() {
   startSession();
 }
 
+function resetPreviewState() {
+  state.isAchievementPreview = false;
+  retrySameModeButton.classList.remove("hidden");
+  resultDebugNotice.classList.add("hidden");
+  resultDebugText.textContent = "表示確認用のプレビューです。記録は変更されません。";
+}
+
 function backToStart() {
+  resetPreviewState();
   state.isDebugSession = false;
   state.debugQuestionId = null;
   showScreen("start");
@@ -648,9 +758,10 @@ function hideAchievementDisplay() {
 function getNewlyCompletedRegions() {
   const newlyCompleted = [];
   const records = getAllQuestionRecords();
+  const completedAtStart = getCompletedRegions();
 
   REGION_ORDER.forEach(region => {
-    if (hasCompletedRegion(region)) {
+    if (completedAtStart[region]) {
       return;
     }
 
@@ -664,8 +775,11 @@ function getNewlyCompletedRegions() {
       return (record?.correctCount || 0) >= 1;
     });
 
-    if (isComplete && markRegionCompleted(region)) {
-      newlyCompleted.push(region);
+    if (isComplete) {
+      const marked = markRegionCompleted(region);
+      if (marked) {
+        newlyCompleted.push(region);
+      }
     }
   });
 
@@ -673,7 +787,7 @@ function getNewlyCompletedRegions() {
 }
 
 function hasPerfectAllRegionClear() {
-  if (state.isDebugSession) {
+  if (state.isDebugSession || state.isAchievementPreview) {
     return false;
   }
 
@@ -712,10 +826,10 @@ function hasPerfectAllRegionClear() {
   return true;
 }
 
-function renderAchievements(newlyCompletedRegions, hasSecretAchievement) {
+function renderAchievements(regions, hasSecretAchievement) {
   hideAchievementDisplay();
 
-  if (!hasSecretAchievement && newlyCompletedRegions.length === 0) {
+  if (!hasSecretAchievement && (!regions || regions.length === 0)) {
     return;
   }
 
@@ -732,11 +846,11 @@ function renderAchievements(newlyCompletedRegions, hasSecretAchievement) {
     `;
   }
 
-  if (newlyCompletedRegions.length > 0) {
+  if (regions && regions.length > 0) {
     regionAchievementBox.classList.remove("hidden");
     regionAchievementBox.classList.add("region-achievement-group");
 
-    regionAchievementBox.innerHTML = newlyCompletedRegions
+    regionAchievementBox.innerHTML = regions
       .map(region => {
         const label = getRegionLabel(region);
         return `
@@ -755,6 +869,7 @@ function renderAchievements(newlyCompletedRegions, hasSecretAchievement) {
 
 function renderResult() {
   showScreen("result");
+  resetPreviewState();
 
   const total = state.sessionQuestions.length;
   const rate = total > 0 ? Math.round((state.correct / total) * 100) : 0;

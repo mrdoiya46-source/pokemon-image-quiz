@@ -232,6 +232,26 @@ h3 {
   gap: 10px;
 }
 
+.debug-actions {
+  margin-bottom: 2px;
+}
+
+.debug-actions-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.debug-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.debug-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
 .quiz-actions {
   margin-top: 6px;
 }
@@ -342,6 +362,31 @@ h3 {
   color: #2d4467;
   font-weight: 800;
   font-size: 1rem;
+}
+
+.debug-result-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed #c7d3ea;
+  background: #fbfcff;
+  color: #52627f;
+  font-size: 0.92rem;
+  margin-bottom: 14px;
+}
+
+.debug-result-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eef2fb;
+  color: #4e63a6;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  font-size: 0.76rem;
+  flex: 0 0 auto;
 }
 
 .debug-panel {
@@ -487,5 +532,10 @@ h3 {
 
   .quick-count-button {
     padding: 11px 8px;
+  }
+
+  .debug-grid-2,
+  .debug-actions-grid {
+    grid-template-columns: 1fr;
   }
 }

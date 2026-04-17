@@ -79,7 +79,6 @@ const backToStartButton = document.getElementById("backToStartButton");
 const achievementArea = document.getElementById("achievementArea");
 const secretAchievementBox = document.getElementById("secretAchievementBox");
 const regionAchievementBox = document.getElementById("regionAchievementBox");
-const completedRegionList = document.getElementById("completedRegionList");
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -641,8 +640,9 @@ function hideAchievementDisplay() {
   achievementArea.classList.add("hidden");
   secretAchievementBox.classList.add("hidden");
   regionAchievementBox.classList.add("hidden");
+  regionAchievementBox.classList.remove("region-achievement-group");
   secretAchievementBox.innerHTML = "";
-  completedRegionList.innerHTML = "";
+  regionAchievementBox.innerHTML = "";
 }
 
 function getNewlyCompletedRegions() {
@@ -734,8 +734,21 @@ function renderAchievements(newlyCompletedRegions, hasSecretAchievement) {
 
   if (newlyCompletedRegions.length > 0) {
     regionAchievementBox.classList.remove("hidden");
-    completedRegionList.innerHTML = newlyCompletedRegions
-      .map(region => `<li>${escapeHtml(getRegionLabel(region))}地方コンプリート！</li>`)
+    regionAchievementBox.classList.add("region-achievement-group");
+
+    regionAchievementBox.innerHTML = newlyCompletedRegions
+      .map(region => {
+        const label = getRegionLabel(region);
+        return `
+          <div class="region-complete-card">
+            <div class="achievement-badge">COMPLETE</div>
+            <div class="achievement-title">${escapeHtml(label)}地方コンプリート！</div>
+            <div class="achievement-text">
+              ${escapeHtml(label)}地方のすべてのポケモンと出会い、正解しました！
+            </div>
+          </div>
+        `;
+      })
       .join("");
   }
 }

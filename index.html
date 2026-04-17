@@ -24,6 +24,17 @@
         </div>
       </div>
 
+      <div class="option-block" id="excludeSolvedBlock">
+        <span class="option-title">出題オプション</span>
+        <label class="check-option" for="excludeSolvedCheckbox">
+          <input id="excludeSolvedCheckbox" type="checkbox">
+          <span>正解済みを除外</span>
+        </label>
+        <small class="help-text">
+          一度でも正解した問題を候補から外します。復習モードでは無効です。
+        </small>
+      </div>
+
       <label class="field">
         <span>地方</span>
         <select id="regionSelect">
@@ -49,11 +60,17 @@
           inputmode="numeric"
           min="1"
           step="1"
-          value="20"
-          placeholder="空欄なら全問"
+          placeholder="候補数が自動で入ります"
         >
         <small id="questionCountHelp" class="help-text"></small>
       </label>
+
+      <div class="quick-counts">
+        <button type="button" class="quick-count-button" data-count="10">10</button>
+        <button type="button" class="quick-count-button" data-count="20">20</button>
+        <button type="button" class="quick-count-button" data-count="50">50</button>
+        <button type="button" class="quick-count-button" data-count="all">全問</button>
+      </div>
 
       <div class="summary-grid">
         <div class="mini-card">

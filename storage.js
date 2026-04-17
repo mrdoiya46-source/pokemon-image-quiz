@@ -1,5 +1,30 @@
 const STORAGE_KEY = "pokemonImageQuiz.v2";
 
+function createEmptyQuestionRecord() {
+  return {
+    wrongCount: 0,
+    correctCount: 0,
+    askedCount: 0,
+    lastWrongInput: "",
+    lastAnsweredAt: "",
+    needsReview: false
+  };
+}
+
+function normalizeQuestionRecord(record) {
+  const base = createEmptyQuestionRecord();
+  const source = record && typeof record === "object" ? record : {};
+
+  return {
+    wrongCount: Number(source.wrongCount) || 0,
+    correctCount: Number(source.correctCount) || 0,
+    askedCount: Number(source.askedCount) || 0,
+    lastWrongInput: String(source.lastWrongInput || ""),
+    lastAnsweredAt: String(source.lastAnsweredAt || ""),
+    needsReview: Boolean(source.needsReview)
+  };
+}
+
 function migrateLegacyStore(parsed) {
   if (parsed && parsed.questions && typeof parsed.questions === "object") {
     return { questions: parsed.questions };
@@ -26,6 +51,20 @@ function migrateLegacyStore(parsed) {
   return { questions: {} };
 }
 
+function normalizeStoreShape(store) {
+  const questions = {};
+  const sourceQuestions =
+    store && store.questions && typeof store.questions === "object"
+      ? store.questions
+      : {};
+
+  Object.entries(sourceQuestions).forEach(([questionId, record]) => {
+    questions[questionId] = normalizeQuestionRecord(record);
+  });
+
+  return { questions };
+}
+
 function loadStore() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -34,7 +73,7 @@ function loadStore() {
     }
 
     const parsed = JSON.parse(raw);
-    const migrated = migrateLegacyStore(parsed);
+    const migrated = normalizeStoreShape(migrateLegacyStore(parsed));
 
     if (JSON.stringify(parsed) !== JSON.stringify(migrated)) {
       saveStore(migrated);
@@ -50,36 +89,43 @@ function saveStore(store) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
 }
 
+function getAllQuestionRecords() {
+  return loadStore().questions;
+}
+
 function getQuestionRecord(questionId) {
   const store = loadStore();
-  return store.questions[questionId] || {
-    wrongCount: 0,
-    correctCount: 0,
-    lastWrongInput: "",
-    lastAnsweredAt: "",
-    needsReview: false
-  };
+  return normalizeQuestionRecord(store.questions[questionId]);
 }
 
 function getReviewIds() {
-  const store = loadStore();
-  return Object.entries(store.questions)
+  const records = getAllQuestionRecords();
+  return Object.entries(records)
     .filter(([, record]) => record && record.needsReview)
     .map(([id]) => id);
+}
+
+function incrementAskedCount(questionId) {
+  const store = loadStore();
+
+  if (!store.questions[questionId]) {
+    store.questions[questionId] = createEmptyQuestionRecord();
+  }
+
+  store.questions[questionId] = normalizeQuestionRecord(store.questions[questionId]);
+  store.questions[questionId].askedCount += 1;
+
+  saveStore(store);
 }
 
 function recordQuestionResult(questionId, isCorrect, rawInput) {
   const store = loadStore();
 
   if (!store.questions[questionId]) {
-    store.questions[questionId] = {
-      wrongCount: 0,
-      correctCount: 0,
-      lastWrongInput: "",
-      lastAnsweredAt: "",
-      needsReview: false
-    };
+    store.questions[questionId] = createEmptyQuestionRecord();
   }
+
+  store.questions[questionId] = normalizeQuestionRecord(store.questions[questionId]);
 
   const record = store.questions[questionId];
   record.lastAnsweredAt = new Date().toISOString();

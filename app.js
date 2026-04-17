@@ -10,7 +10,9 @@ const state = {
   lastConfig: null,
   debugMode: false,
   isDebugSession: false,
-  debugQuestionId: null
+  debugQuestionId: null,
+  questionCountMode: "auto",
+  manualRequestedCount: null
 };
 
 const startScreen = document.getElementById("startScreen");
@@ -25,6 +27,10 @@ const reviewNotice = document.getElementById("reviewNotice");
 const regionSelect = document.getElementById("regionSelect");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const startButton = document.getElementById("startButton");
+
+const excludeSolvedBlock = document.getElementById("excludeSolvedBlock");
+const excludeSolvedCheckbox = document.getElementById("excludeSolvedCheckbox");
+const quickCountButtons = [...document.querySelectorAll(".quick-count-button")];
 
 const debugPanel = document.getElementById("debugPanel");
 const debugQuestionInput = document.getElementById("debugQuestionInput");
@@ -93,7 +99,25 @@ function bindEvents() {
     updateStartSummary();
   });
 
-  questionCountInput.addEventListener("input", sanitizeQuestionCountInput);
+  excludeSolvedCheckbox.addEventListener("change", () => {
+    updateStartSummary();
+  });
+
+  questionCountInput.addEventListener("input", handleQuestionCountInput);
+
+  quickCountButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const raw = button.dataset.count;
+      if (raw === "all") {
+        state.questionCountMode = "auto";
+        state.manualRequestedCount = null;
+      } else {
+        state.questionCountMode = "manual";
+        state.manualRequestedCount = Math.max(1, parseInt(raw, 10) || 1);
+      }
+      updateStartSummary();
+    });
+  });
 
   startButton.addEventListener("click", startSession);
   submitButton.addEventListener("click", submitCurrentAnswer);
@@ -184,17 +208,34 @@ function populateDebugQuestionList() {
   });
 }
 
-function sanitizeQuestionCountInput() {
-  const value = questionCountInput.value.trim();
-  if (!value) {
+function handleQuestionCountInput() {
+  const raw = questionCountInput.value.trim();
+
+  if (!raw) {
+    state.questionCountMode = "auto";
+    state.manualRequestedCount = null;
+    updateStartSummary();
     return;
   }
-  const number = Math.max(1, parseInt(value, 10) || 1);
-  questionCountInput.value = String(number);
+
+  const number = Math.max(1, parseInt(raw, 10) || 1);
+  state.questionCountMode = "manual";
+  state.manualRequestedCount = number;
+  updateStartSummary();
 }
 
 function getCurrentRegion() {
   return regionSelect.value || "all";
+}
+
+function isExcludeSolvedEnabled() {
+  return state.mode !== "review" && excludeSolvedCheckbox.checked;
+}
+
+function updateExcludeSolvedUi() {
+  const disabled = state.mode === "review";
+  excludeSolvedCheckbox.disabled = disabled;
+  excludeSolvedBlock.classList.toggle("disabled", disabled);
 }
 
 function matchesRegion(question, region) {
@@ -205,22 +246,86 @@ function matchesRegion(question, region) {
 }
 
 function getReviewIdsForRegion(region = getCurrentRegion()) {
-  const reviewSet = new Set(getReviewIds());
+  const records = getAllQuestionRecords();
+
   return state.questions
-    .filter(q => reviewSet.has(q.id) && matchesRegion(q, region))
-    .map(q => q.id);
+    .filter(question => {
+      const record = records[question.id];
+      return Boolean(record?.needsReview) && matchesRegion(question, region);
+    })
+    .map(question => question.id);
 }
 
 function getAvailableQuestions(mode = state.mode, region = getCurrentRegion()) {
+  const records = getAllQuestionRecords();
+
   if (mode === "review") {
-    const reviewSet = new Set(getReviewIds());
-    return state.questions.filter(q => reviewSet.has(q.id) && matchesRegion(q, region));
+    return state.questions.filter(question => {
+      const record = records[question.id];
+      return Boolean(record?.needsReview) && matchesRegion(question, region);
+    });
   }
 
-  return state.questions.filter(q => matchesRegion(q, region));
+  return state.questions.filter(question => {
+    if (!matchesRegion(question, region)) {
+      return false;
+    }
+
+    if (!isExcludeSolvedEnabled()) {
+      return true;
+    }
+
+    const record = records[question.id];
+    return (record?.correctCount || 0) < 1;
+  });
+}
+
+function getEffectiveQuestionCount(availableCount) {
+  if (availableCount <= 0) {
+    return 0;
+  }
+
+  if (state.questionCountMode === "auto") {
+    return availableCount;
+  }
+
+  const requested = Math.max(1, parseInt(state.manualRequestedCount, 10) || 1);
+  return Math.min(requested, availableCount);
+}
+
+function syncQuestionCountInput(availableCount) {
+  const effectiveCount = getEffectiveQuestionCount(availableCount);
+  const nextValue = effectiveCount > 0 ? String(effectiveCount) : "";
+
+  if (questionCountInput.value !== nextValue) {
+    questionCountInput.value = nextValue;
+  }
+
+  updateQuickCountButtons(availableCount);
+}
+
+function updateQuickCountButtons(availableCount) {
+  quickCountButtons.forEach(button => {
+    const raw = button.dataset.count;
+    const isAll = raw === "all";
+
+    button.disabled = availableCount <= 0;
+
+    let isActive = false;
+    if (isAll) {
+      isActive = state.questionCountMode === "auto";
+    } else {
+      const count = parseInt(raw, 10);
+      isActive = state.questionCountMode === "manual" && state.manualRequestedCount === count;
+    }
+
+    button.classList.toggle("active", isActive);
+  });
 }
 
 function updateStartSummary() {
+  updateExcludeSolvedUi();
+
   const currentRegion = getCurrentRegion();
   const available = getAvailableQuestions(state.mode, currentRegion).length;
   const reviewAvailable = getReviewIdsForRegion(currentRegion).length;
@@ -235,6 +340,8 @@ function updateStartSummary() {
   if (reviewNotice) {
     reviewNotice.classList.toggle("hidden", state.mode !== "review");
   }
+
+  syncQuestionCountInput(available);
 }
 
 function buildSessionQuestions() {
@@ -245,12 +352,8 @@ function buildSessionQuestions() {
     pool = shuffleArray(pool);
   }
 
-  const requestedCount = parseInt(questionCountInput.value, 10);
-  if (!Number.isNaN(requestedCount) && requestedCount > 0) {
-    pool = pool.slice(0, Math.min(requestedCount, pool.length));
-  }
-
-  return pool;
+  const count = getEffectiveQuestionCount(pool.length);
+  return pool.slice(0, count);
 }
 
 function startSession() {
@@ -266,7 +369,9 @@ function startSession() {
     kind: "normal",
     mode: state.mode,
     region: state.region,
-    countValue: questionCountInput.value.trim()
+    countMode: state.questionCountMode,
+    manualRequestedCount: state.manualRequestedCount,
+    excludeSolvedChecked: excludeSolvedCheckbox.checked
   };
 
   if (state.sessionQuestions.length === 0) {
@@ -332,10 +437,16 @@ function retrySameConfig() {
     return;
   }
 
-  questionCountInput.value = state.lastConfig.countValue || "20";
   state.mode = state.lastConfig.mode;
   state.region = state.lastConfig.region || "all";
+  state.questionCountMode = state.lastConfig.countMode || "auto";
+  state.manualRequestedCount =
+    state.lastConfig.manualRequestedCount !== undefined
+      ? state.lastConfig.manualRequestedCount
+      : null;
+
   regionSelect.value = state.region;
+  excludeSolvedCheckbox.checked = Boolean(state.lastConfig.excludeSolvedChecked);
 
   modeButtons.forEach(btn => {
     btn.classList.toggle("active", btn.dataset.mode === state.mode);
@@ -375,6 +486,11 @@ function renderQuestion() {
   state.answered = false;
 
   const question = state.sessionQuestions[state.currentIndex];
+
+  if (!state.isDebugSession) {
+    incrementAskedCount(question.id);
+  }
+
   questionImage.src = question.image;
   questionImage.alt = question.answer;
 
@@ -498,9 +614,7 @@ function renderResult() {
 
   const total = state.sessionQuestions.length;
   const rate = total > 0 ? Math.round((state.correct / total) * 100) : 0;
-  const remainingReviewCount = state.isDebugSession
-    ? getReviewIdsForRegion(state.region).length
-    : getReviewIdsForRegion(state.region).length;
+  const remainingReviewCount = getReviewIdsForRegion(state.region).length;
 
   resultCorrect.textContent = String(state.correct);
   resultWrong.textContent = String(state.wrong);
@@ -545,7 +659,7 @@ function getRegionLabel(region) {
     case "kalos":
       return "カロス";
     case "alola":
-      return "アローラ+α";
+      return "アローラ";
     case "galar":
       return "ガラル";
     case "hisui":

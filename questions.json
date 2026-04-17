@@ -48,7 +48,9 @@
     "id": "0006",
     "image": "images/0006.png",
     "answer": "リザードン",
-    "aliases": [],
+    "aliases": [
+      "テスト作成者の相棒"
+    ],
     "enabled": true,
     "region": "kanto",
     "tags": []
@@ -2386,7 +2388,9 @@
     "id": "0197",
     "image": "images/0197.png",
     "answer": "ブラッキー",
-    "aliases": [],
+    "aliases": [
+      "実は製作者が好きなポケモン③"
+    ],
     "enabled": true,
     "region": "johto",
     "tags": []
@@ -4099,7 +4103,9 @@
     "id": "0376",
     "image": "images/0376.png",
     "answer": "メタグロス",
-    "aliases": [],
+    "aliases": [
+      "実は製作者が好きなポケモン②"
+    ],
     "enabled": true,
     "region": "hoenn",
     "tags": []
@@ -4144,7 +4150,9 @@
     "id": "0381",
     "image": "images/0381.png",
     "answer": "ラティオス",
-    "aliases": [],
+    "aliases": [
+      "実は製作者が好きなポケモン①"
+    ],
     "enabled": true,
     "region": "hoenn",
     "tags": []
@@ -4377,7 +4385,9 @@
     "id": "0406",
     "image": "images/0406.png",
     "answer": "スボミー",
-    "aliases": [],
+    "aliases": [
+      "むずむずかふん"
+    ],
     "enabled": true,
     "region": "sinnoh",
     "tags": []
@@ -4525,8 +4535,12 @@
   {
     "id": "0421",
     "image": "images/0421.png",
-    "answer": "チェリム",
-    "aliases": [],
+    "answer": "チェリム　ポジフォルム",
+    "aliases": [
+      "チェリム ポジフォルム",
+      "チェリムポジフォルム",
+      "チェリム"
+    ],
     "enabled": true,
     "region": "sinnoh",
     "tags": []
@@ -4923,7 +4937,9 @@
     "id": "0460",
     "image": "images/0460.png",
     "answer": "ユキノオー",
-    "aliases": [],
+    "aliases": [
+      "あばらんちはんまー"
+    ],
     "enabled": true,
     "region": "sinnoh",
     "tags": []
@@ -5280,8 +5296,12 @@
   {
     "id": "0492",
     "image": "images/0492.png",
-    "answer": "シェイミ",
-    "aliases": [],
+    "answer": "シェイミ　ランドフォルム",
+    "aliases": [
+      "シェイミ ランドフォルム",
+      "シェイミランドフォルム",
+      "シェイミ"
+    ],
     "enabled": true,
     "region": "sinnoh",
     "tags": []
@@ -5966,8 +5986,12 @@
   {
     "id": "0555",
     "image": "images/0555.png",
-    "answer": "ヒヒダルマ",
-    "aliases": [],
+    "answer": "ヒヒダルマ　ノーマルモード",
+    "aliases": [
+      "ヒヒダルマ ノーマルモード",
+      "ヒヒダルマノーマルモード",
+      "ヒヒダルマ"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6304,8 +6328,12 @@
   {
     "id": "0585",
     "image": "images/0585.png",
-    "answer": "シキジカ",
-    "aliases": [],
+    "answer": "シキジカ　はるのすがた",
+    "aliases": [
+      "シキジカ はるのすがた",
+      "シキジカはるのすがた",
+      "シキジカ"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6313,8 +6341,12 @@
   {
     "id": "0586",
     "image": "images/0586.png",
-    "answer": "メブキジカ",
-    "aliases": [],
+    "answer": "メブキジカ　はるのすがた",
+    "aliases": [
+      "メブキジカ はるのすがた",
+      "メブキジカはるのすがた",
+      "メブキジカ"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6888,8 +6920,12 @@
   {
     "id": "0641",
     "image": "images/0641.png",
-    "answer": "トルネロス",
-    "aliases": [],
+    "answer": "トルネロス　けしんフォルム",
+    "aliases": [
+      "トルネロス けしんフォルム",
+      "トルネロスけしんフォルム",
+      "トルネロス"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6897,8 +6933,12 @@
   {
     "id": "0642",
     "image": "images/0642.png",
-    "answer": "ボルトロス",
-    "aliases": [],
+    "answer": "ボルトロス　けしんフォルム",
+    "aliases": [
+      "ボルトロス けしんフォルム",
+      "ボルトロスけしんフォルム",
+      "ボルトロス"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6924,8 +6964,12 @@
   {
     "id": "0645",
     "image": "images/0645.png",
-    "answer": "ランドロス",
-    "aliases": [],
+    "answer": "ランドロス　けしんフォルム",
+    "aliases": [
+      "ランドロス けしんフォルム",
+      "ランドロスけしんフォルム",
+      "ランドロス"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6983,8 +7027,12 @@
   {
     "id": "0647",
     "image": "images/0647.png",
-    "answer": "ケルディオ",
-    "aliases": [],
+    "answer": "ケルディオ　いつものすがた",
+    "aliases": [
+      "ケルディオ いつものすがた",
+      "ケルディオいつものすがた",
+      "ケルディオ"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -6992,8 +7040,12 @@
   {
     "id": "0648",
     "image": "images/0648.png",
-    "answer": "メロエッタ",
-    "aliases": [],
+    "answer": "メロエッタ　ボイスフォルム",
+    "aliases": [
+      "メロエッタ ボイスフォルム",
+      "メロエッタボイスフォルム",
+      "メロエッタ"
+    ],
     "enabled": true,
     "region": "unova",
     "tags": []
@@ -7154,8 +7206,12 @@
   {
     "id": "0666",
     "image": "images/0666.png",
-    "answer": "ビビヨン",
-    "aliases": [],
+    "answer": "ビビヨン　はなぞののもよう",
+    "aliases": [
+      "ビビヨン はなぞののもよう",
+      "ビビヨンはなぞののもよう",
+      "ビビヨン"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7204,8 +7260,12 @@
   {
     "id": "0669",
     "image": "images/0669.png",
-    "answer": "フラベベ",
-    "aliases": [],
+    "answer": "フラベベ　あかいはな",
+    "aliases": [
+      "フラベベ あかいはな",
+      "フラベベあかいはな",
+      "フラベベ"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7213,8 +7273,12 @@
   {
     "id": "0670",
     "image": "images/0670.png",
-    "answer": "フラエッテ",
-    "aliases": [],
+    "answer": "フラエッテ　あかいはな",
+    "aliases": [
+      "フラエッテ あかいはな",
+      "フラエッテあかいはな",
+      "フラエッテ"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7222,8 +7286,12 @@
   {
     "id": "0671",
     "image": "images/0671.png",
-    "answer": "フラージェス",
-    "aliases": [],
+    "answer": "フラージェス　あかいはな",
+    "aliases": [
+      "フラージェス あかいはな",
+      "フラージェスあかいはな",
+      "フラージェス"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7267,8 +7335,12 @@
   {
     "id": "0676",
     "image": "images/0676.png",
-    "answer": "トリミアン",
-    "aliases": [],
+    "answer": "トリミアン　やせいのすがた",
+    "aliases": [
+      "トリミアン やせいのすがた",
+      "トリミアンやせいのすがた",
+      "トリミアン"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7335,8 +7407,12 @@
   {
     "id": "0681",
     "image": "images/0681.png",
-    "answer": "ギルガルド",
-    "aliases": [],
+    "answer": "ギルガルド　シールドフォルム",
+    "aliases": [
+      "ギルガルド シールドフォルム",
+      "ギルガルドシールドフォルム",
+      "ギルガルド"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7630,8 +7706,12 @@
   {
     "id": "0710",
     "image": "images/0710.png",
-    "answer": "バケッチャ",
-    "aliases": [],
+    "answer": "バケッチャ　ちゅうだましゅ",
+    "aliases": [
+      "バケッチャ ちゅうだましゅ",
+      "バケッチャちゅうだましゅ",
+      "バケッチャ"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7639,8 +7719,12 @@
   {
     "id": "0711",
     "image": "images/0711.png",
-    "answer": "パンプジン",
-    "aliases": [],
+    "answer": "パンプジン　ちゅうだましゅ",
+    "aliases": [
+      "パンプジン ちゅうだましゅ",
+      "パンプジンちゅうだましゅ",
+      "パンプジン"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -7776,8 +7860,12 @@
   {
     "id": "0720",
     "image": "images/0720.png",
-    "answer": "フーパ",
-    "aliases": [],
+    "answer": "フーパ　いめしめられしフーパ",
+    "aliases": [
+      "フーパ いめしめられしフーパ",
+      "フーパいめしめられしフーパ",
+      "フーパ"
+    ],
     "enabled": true,
     "region": "kalos",
     "tags": []
@@ -8121,8 +8209,12 @@
   {
     "id": "0746",
     "image": "images/0746.png",
-    "answer": "ヨワシ",
-    "aliases": [],
+    "answer": "ヨワシ　たんどくのすがた",
+    "aliases": [
+      "ヨワシ たんどくのすがた",
+      "ヨワシたんどくのすがた",
+      "ヨワシ"
+    ],
     "enabled": true,
     "region": "alola",
     "tags": []
@@ -8366,8 +8458,12 @@
   {
     "id": "0773",
     "image": "images/0773.png",
-    "answer": "シルヴァディ",
-    "aliases": [],
+    "answer": "シルヴァディ　タイプ：ノーマル",
+    "aliases": [
+      "シルヴァディ タイプ：ノーマル",
+      "シルヴァディタイプ：ノーマル",
+      "シルヴァディ"
+    ],
     "enabled": true,
     "region": "alola",
     "tags": []
@@ -8391,13 +8487,10 @@
   {
     "id": "0774-Core",
     "image": "images/0774-Core.png",
-    "answer": "メテノ　コア",
+    "answer": "メテノ　あかいろのコア",
     "aliases": [
-      "メテノ（コア）",
-      "メテノ(コア)",
-      "メテノ　コア",
-      "メテノ コア",
-      "メテノコア",
+      "メテノ あかいろのコア",
+      "メテノあかいろのコア",
       "メテノ"
     ],
     "enabled": true,
@@ -8434,8 +8527,12 @@
   {
     "id": "0778",
     "image": "images/0778.png",
-    "answer": "ミミッキュ",
-    "aliases": [],
+    "answer": "ミミッキュ　ばけたすがた",
+    "aliases": [
+      "ミミッキュ ばけたすがた",
+      "ミミッキュばけたすがた",
+      "ミミッキュ"
+    ],
     "enabled": true,
     "region": "alola",
     "tags": []
@@ -9190,8 +9287,12 @@
   {
     "id": "0854",
     "image": "images/0854.png",
-    "answer": "ヤバチャ",
-    "aliases": [],
+    "answer": "ヤバチャ　がんさくフォルム",
+    "aliases": [
+      "ヤバチャ がんさくフォルム",
+      "ヤバチャがんさくフォルム",
+      "ヤバチャ"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9199,8 +9300,12 @@
   {
     "id": "0855",
     "image": "images/0855.png",
-    "answer": "ポットデス",
-    "aliases": [],
+    "answer": "ポットデス　がんさくフォルム",
+    "aliases": [
+      "ポットデス がんさくフォルム",
+      "ポットデスがんさくフォルム",
+      "ポットデス"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9263,7 +9368,9 @@
     "id": "0862",
     "image": "images/0862.png",
     "answer": "タチフサグマ",
-    "aliases": [],
+    "aliases": [
+      "ガラルタチフサグマ"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9272,7 +9379,9 @@
     "id": "0863",
     "image": "images/0863.png",
     "answer": "ニャイキング",
-    "aliases": [],
+    "aliases": [
+      "ガラルニャイキング"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9281,7 +9390,9 @@
     "id": "0864",
     "image": "images/0864.png",
     "answer": "サニゴーン",
-    "aliases": [],
+    "aliases": [
+      "ガラルサニゴーン"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9290,7 +9401,9 @@
     "id": "0865",
     "image": "images/0865.png",
     "answer": "ネギガナイト",
-    "aliases": [],
+    "aliases": [
+      "ガラルネギガナイト"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9299,7 +9412,9 @@
     "id": "0866",
     "image": "images/0866.png",
     "answer": "バリコオル",
-    "aliases": [],
+    "aliases": [
+      "ガラルバリコオル"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9308,7 +9423,9 @@
     "id": "0867",
     "image": "images/0867.png",
     "answer": "デスバーン",
-    "aliases": [],
+    "aliases": [
+      "ガラルデスバーン"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9379,8 +9496,12 @@
   {
     "id": "0875",
     "image": "images/0875.png",
-    "answer": "コオリッポ",
-    "aliases": [],
+    "answer": "コオリッポ　アイスフェイス",
+    "aliases": [
+      "コオリッポ アイスフェイス",
+      "コオリッポアイスフェイス",
+      "コオリッポ"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9420,8 +9541,12 @@
   {
     "id": "0877",
     "image": "images/0877.png",
-    "answer": "モルペコ",
-    "aliases": [],
+    "answer": "モルペコ　まんぷくもよう",
+    "aliases": [
+      "モルペコ まんぷくもよう",
+      "モルペコまんぷくもよう",
+      "モルペコ"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9519,8 +9644,12 @@
   {
     "id": "0888",
     "image": "images/0888.png",
-    "answer": "ザシアン",
-    "aliases": [],
+    "answer": "ザシアン　けんのおう",
+    "aliases": [
+      "ザシアン けんのおう",
+      "ザシアンけんのおう",
+      "ザシアン"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9528,8 +9657,12 @@
   {
     "id": "0889",
     "image": "images/0889.png",
-    "answer": "ザマゼンタ",
-    "aliases": [],
+    "answer": "ザマゼンタ　たてのおう",
+    "aliases": [
+      "ザマゼンタ たてのおう",
+      "ザマゼンタたてのおう",
+      "ザマゼンタ"
+    ],
     "enabled": true,
     "region": "galar",
     "tags": []
@@ -9651,7 +9784,9 @@
     "id": "0900",
     "image": "images/0900.png",
     "answer": "バサギリ",
-    "aliases": [],
+    "aliases": [
+      "ヒスイバサギリ"
+    ],
     "enabled": true,
     "region": "hisui",
     "tags": []
@@ -9660,7 +9795,9 @@
     "id": "0901",
     "image": "images/0901.png",
     "answer": "ガチグマ",
-    "aliases": [],
+    "aliases": [
+      "ヒスイガチグマ"
+    ],
     "enabled": true,
     "region": "hisui",
     "tags": []
@@ -9718,7 +9855,9 @@
     "id": "0903",
     "image": "images/0903.png",
     "answer": "オオニューラ",
-    "aliases": [],
+    "aliases": [
+      "ヒスイオオニューラ"
+    ],
     "enabled": true,
     "region": "hisui",
     "tags": []
@@ -9727,7 +9866,9 @@
     "id": "0904",
     "image": "images/0904.png",
     "answer": "ハリーマン",
-    "aliases": [],
+    "aliases": [
+      "ヒスイハリーマン"
+    ],
     "enabled": true,
     "region": "hisui",
     "tags": []
@@ -9938,8 +10079,15 @@
   {
     "id": "0925",
     "image": "images/0925.png",
-    "answer": "イッカネズミ",
-    "aliases": [],
+    "answer": "イッカネズミ　３びきかぞく",
+    "aliases": [
+      "イッカネズミ ３びきかぞく",
+      "イッカネズミ３びきかぞく",
+      "３びきかぞく",
+      "イッカネズミ 3びきかぞく",
+      "イッカネズミ3びきかぞく",
+      "イッカネズミ"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -9992,8 +10140,12 @@
   {
     "id": "0931",
     "image": "images/0931.png",
-    "answer": "イキリンコ",
-    "aliases": [],
+    "answer": "イキリンコ　グリーンフェザー",
+    "aliases": [
+      "イキリンコ グリーンフェザー",
+      "イキリンコグリーンフェザー",
+      "イキリンコ"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10128,7 +10280,9 @@
     "id": "0946",
     "image": "images/0946.png",
     "answer": "アノクサ",
-    "aliases": [],
+    "aliases": [
+      "あほくさ"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10289,8 +10443,12 @@
   {
     "id": "0964",
     "image": "images/0964.png",
-    "answer": "イルカマン",
-    "aliases": [],
+    "answer": "イルカマン　マイティフォルム",
+    "aliases": [
+      "イルカマン マイティフォルム",
+      "イルカマンマイティフォルム",
+      "イルカマン"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10415,8 +10573,11 @@
   {
     "id": "0978",
     "image": "images/0978.png",
-    "answer": "シャリタツ",
-    "aliases": [],
+    "answer": "シャリタツ　そったすがた",
+    "aliases": [
+      "シャリタツ そったすがた",
+      "シャリタツそったすがた"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10451,8 +10612,12 @@
   {
     "id": "0982",
     "image": "images/0982.png",
-    "answer": "ノココッチ",
-    "aliases": [],
+    "answer": "ノココッチ　ふたふしフォルム",
+    "aliases": [
+      "ノココッチ ふたふしフォルム",
+      "ノココッチふたふしフォルム",
+      "ノココッチ"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10709,7 +10874,9 @@
     "id": "1008",
     "image": "images/1008.png",
     "answer": "ミライドン",
-    "aliases": [],
+    "aliases": [
+      "実はPCMのミライドンは肩が弱い"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10744,8 +10911,14 @@
   {
     "id": "1012",
     "image": "images/1012.png",
-    "answer": "チャデス",
-    "aliases": [],
+    "answer": "チャデス　マガイモノのすがた",
+    "aliases": [
+      "チャデス（マガイモノのすがた）",
+      "チャデス(マガイモノのすがた)",
+      "チャデス マガイモノのすがた",
+      "マガイモノチャデス",
+      "チャデス"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []
@@ -10753,8 +10926,14 @@
   {
     "id": "1013",
     "image": "images/1013.png",
-    "answer": "ヤバソチャ",
-    "aliases": [],
+    "answer": "ヤバソチャ　ボンサクのすがた",
+    "aliases": [
+      "ヤバソチャ（ボンサクのすがた）",
+      "ヤバソチャ(ボンサクのすがた)",
+      "ヤバソチャ ボンサクのすがた",
+      "ボンサクヤバソチャ",
+      "ヤバソチャ"
+    ],
     "enabled": true,
     "region": "paldea",
     "tags": []

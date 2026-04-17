@@ -874,7 +874,7 @@ function renderAchievements(regions, hasSecretAchievement) {
             <div class="achievement-badge">COMPLETE</div>
             <div class="achievement-title">${escapeHtml(label)}地方コンプリート！</div>
             <div class="achievement-text">
-              ${escapeHtml(label)}地方のすべてのポケモンと<br>出会い、正解しました！
+              ${escapeHtml(label)}地方のすべてのポケモンと出会い、正解しました！
             </div>
           </div>
         `;

@@ -857,6 +857,7 @@ function renderAchievements(regions, hasSecretAchievement) {
         1回のテストで全問連続正解！？
         <p><font size="6">.....え、暇なの？</font>
         <p>とりあえずスクショして河合に送ってみてください。
+        <br>きっといいことあると思います。
       </div>
     `;
   }

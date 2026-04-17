@@ -196,7 +196,10 @@ function bindEvents() {
   });
 
   if (debugStartButton) {
-    debugStartButton.addEventListener("click", startDebugSessionFromInput);
+    debugStartButton.addEventListener("click", event => {
+      event.preventDefault();
+      startDebugSessionFromInput();
+    });
   }
 
   if (debugQuestionInput) {
@@ -209,16 +212,18 @@ function bindEvents() {
   }
 
   if (debugPreviewRegionButton) {
-    debugPreviewRegionButton.addEventListener("click", () => {
+    debugPreviewRegionButton.addEventListener("click", event => {
+      event.preventDefault();
       openAchievementPreview({
-        regions: [debugAchievementRegionA.value],
+        regions: [debugAchievementRegionA?.value || "kanto"],
         secret: false
       });
     });
   }
 
   if (debugPreviewMultiButton) {
-    debugPreviewMultiButton.addEventListener("click", () => {
+    debugPreviewMultiButton.addEventListener("click", event => {
+      event.preventDefault();
       const regions = collectPreviewRegions(true);
       if (!regions) {
         return;
@@ -231,7 +236,8 @@ function bindEvents() {
   }
 
   if (debugPreviewSecretButton) {
-    debugPreviewSecretButton.addEventListener("click", () => {
+    debugPreviewSecretButton.addEventListener("click", event => {
+      event.preventDefault();
       openAchievementPreview({
         regions: [],
         secret: true
@@ -240,7 +246,8 @@ function bindEvents() {
   }
 
   if (debugPreviewAllButton) {
-    debugPreviewAllButton.addEventListener("click", () => {
+    debugPreviewAllButton.addEventListener("click", event => {
+      event.preventDefault();
       const regions = collectPreviewRegions(false);
       openAchievementPreview({
         regions,
@@ -298,6 +305,15 @@ function collectPreviewRegions(requireSecondRegion) {
   return uniqueRegions;
 }
 
+function setResultDebugNotice(visible, text = "表示確認用のプレビューです。記録は変更されません。") {
+  if (!resultDebugNotice || !resultDebugText) {
+    return;
+  }
+
+  resultDebugNotice.classList.toggle("hidden", !visible);
+  resultDebugText.textContent = text;
+}
+
 function openAchievementPreview({ regions = [], secret = false }) {
   if (!state.debugMode) {
     return;
@@ -314,10 +330,11 @@ function openAchievementPreview({ regions = [], secret = false }) {
   resultRate.textContent = "—";
   resultReviewCount.textContent = "—";
 
-  retrySameModeButton.classList.add("hidden");
-  resultDebugNotice.classList.remove("hidden");
-  resultDebugText.textContent = "DEBUG表示中：以下は達成メッセージの確認用です。記録は変更されません。";
+  if (retrySameModeButton) {
+    retrySameModeButton.classList.add("hidden");
+  }
 
+  setResultDebugNotice(true, "DEBUG表示中：以下は達成メッセージの確認用です。記録は変更されません。");
   renderAchievements(regions, secret);
   resultMessage.textContent = "達成メッセージの表示確認用プレビューです。";
 }
@@ -458,10 +475,6 @@ function updateStartSummary() {
   syncQuestionCountInput(available);
 }
 
-function snapshotCompletedRegions() {
-  return { ...getCompletedRegions() };
-}
-
 function buildSessionQuestions() {
   const region = getCurrentRegion();
   let pool = getAvailableQuestions(state.mode, region);
@@ -586,9 +599,10 @@ function retrySameConfig() {
 
 function resetPreviewState() {
   state.isAchievementPreview = false;
-  retrySameModeButton.classList.remove("hidden");
-  resultDebugNotice.classList.add("hidden");
-  resultDebugText.textContent = "表示確認用のプレビューです。記録は変更されません。";
+  if (retrySameModeButton) {
+    retrySameModeButton.classList.remove("hidden");
+  }
+  setResultDebugNotice(false);
 }
 
 function backToStart() {
@@ -758,10 +772,9 @@ function hideAchievementDisplay() {
 function getNewlyCompletedRegions() {
   const newlyCompleted = [];
   const records = getAllQuestionRecords();
-  const completedAtStart = getCompletedRegions();
 
   REGION_ORDER.forEach(region => {
-    if (completedAtStart[region]) {
+    if (hasCompletedRegion(region)) {
       return;
     }
 

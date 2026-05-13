@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>ポケモン言えるかな</title>
+  <title>ポケモン画像テスト</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <h1>ポケモン言えるかな</h1>
+      <h1>ポケモン画像テスト</h1>
     </header>
 
     <main class="card" id="startScreen">
@@ -24,31 +24,48 @@
         </div>
       </div>
 
-      <div class="option-block" id="excludeSolvedBlock">
-        <span class="option-title">出題オプション</span>
-        <label class="check-option" for="excludeSolvedCheckbox">
-          <input id="excludeSolvedCheckbox" type="checkbox">
-          <span>正解済みを除外</span>
-        </label>
-        <small class="help-text">
-          一度でも正解した問題を候補から外します。復習モードでは無効です。
+      <details class="settings-panel" id="detailSettings">
+        <summary>詳細設定</summary>
+        <div class="settings-panel-body" id="detailSettingsBody">
+          <label class="check-option" for="excludeSolvedCheckbox">
+            <input id="excludeSolvedCheckbox" type="checkbox">
+            <span>正解済みを除外</span>
+          </label>
+
+          <label class="check-option" for="excludeRegionalCheckbox">
+            <input id="excludeRegionalCheckbox" type="checkbox">
+            <span>リージョンフォームを除外</span>
+          </label>
+
+          <label class="check-option" for="excludeFormCheckbox">
+            <input id="excludeFormCheckbox" type="checkbox">
+            <span>すがた違いを除外</span>
+          </label>
+
+          <label class="check-option" for="excludeMegaCheckbox">
+            <input id="excludeMegaCheckbox" type="checkbox">
+            <span>メガシンカを除外</span>
+          </label>
+        </div>
+        <small id="detailSettingsHelp" class="help-text">
+          原種は常に出題されます。チェックした分類を候補から外します。
         </small>
-      </div>
+      </details>
 
       <label class="field">
         <span>地方</span>
         <select id="regionSelect">
           <option value="all">全地方</option>
-          <option value="kanto">カントー</option>
-          <option value="johto">ジョウト</option>
-          <option value="hoenn">ホウエン</option>
-          <option value="sinnoh">シンオウ</option>
-          <option value="unova">イッシュ</option>
-          <option value="kalos">カロス</option>
-          <option value="alola">アローラ＋α</option>
-          <option value="galar">ガラル</option>
-          <option value="hisui">ヒスイ</option>
-          <option value="paldea">パルデア</option>
+          <option value="kanto">カントー地方</option>
+          <option value="johto">ジョウト地方</option>
+          <option value="hoenn">ホウエン地方</option>
+          <option value="sinnoh">シンオウ地方</option>
+          <option value="unova">イッシュ地方</option>
+          <option value="kalos">カロス地方</option>
+          <option value="alola">アローラ地方＋α</option>
+          <option value="galar">ガラル地方</option>
+          <option value="hisui">ヒスイ地方</option>
+          <option value="paldea">パルデア地方</option>
         </select>
       </label>
 
@@ -101,7 +118,7 @@
             type="text"
             list="debugQuestionList"
             autocomplete="off"
-            placeholder="例: 0052-alola / 0646 / 0646-white"
+            placeholder="例: 0052-alola / 0006-megaX"
           >
           <datalist id="debugQuestionList"></datalist>
           <small class="help-text">
@@ -110,7 +127,7 @@
         </label>
 
         <div class="actions debug-actions">
-          <button id="debugStartButton" class="ghost-button">この問題を開く</button>
+          <button type="button" id="debugStartButton" class="ghost-button">この問題を開く</button>
         </div>
 
         <div class="debug-divider"></div>
@@ -124,16 +141,16 @@
           <label class="field">
             <span>地方A</span>
             <select id="debugAchievementRegionA">
-              <option value="kanto">カントー</option>
-              <option value="johto">ジョウト</option>
-              <option value="hoenn">ホウエン</option>
-              <option value="sinnoh">シンオウ</option>
-              <option value="unova">イッシュ</option>
-              <option value="kalos">カロス</option>
-              <option value="alola">アローラ</option>
-              <option value="galar">ガラル</option>
-              <option value="hisui">ヒスイ</option>
-              <option value="paldea">パルデア</option>
+              <option value="kanto">カントー地方</option>
+              <option value="johto">ジョウト地方</option>
+              <option value="hoenn">ホウエン地方</option>
+              <option value="sinnoh">シンオウ地方</option>
+              <option value="unova">イッシュ地方</option>
+              <option value="kalos">カロス地方</option>
+              <option value="alola">アローラ地方＋α</option>
+              <option value="galar">ガラル地方</option>
+              <option value="hisui">ヒスイ地方</option>
+              <option value="paldea">パルデア地方</option>
             </select>
           </label>
 
@@ -141,16 +158,16 @@
             <span>地方B（同時達成用）</span>
             <select id="debugAchievementRegionB">
               <option value="">なし</option>
-              <option value="kanto">カントー</option>
-              <option value="johto">ジョウト</option>
-              <option value="hoenn">ホウエン</option>
-              <option value="sinnoh">シンオウ</option>
-              <option value="unova">イッシュ</option>
-              <option value="kalos">カロス</option>
-              <option value="alola">アローラ</option>
-              <option value="galar">ガラル</option>
-              <option value="hisui">ヒスイ</option>
-              <option value="paldea">パルデア</option>
+              <option value="kanto">カントー地方</option>
+              <option value="johto">ジョウト地方</option>
+              <option value="hoenn">ホウエン地方</option>
+              <option value="sinnoh">シンオウ地方</option>
+              <option value="unova">イッシュ地方</option>
+              <option value="kalos">カロス地方</option>
+              <option value="alola">アローラ地方＋α</option>
+              <option value="galar">ガラル地方</option>
+              <option value="hisui">ヒスイ地方</option>
+              <option value="paldea">パルデア地方</option>
             </select>
           </label>
         </div>

@@ -29,7 +29,12 @@ const state = {
   questionCountMode: "auto",
   manualRequestedCount: null,
   sessionAvailableCountAtStart: 0,
-  sessionExcludeSolvedAtStart: false
+  sessionExcludeSolvedAtStart: false,
+  sessionCategoryExclusionsAtStart: {
+    regional: false,
+    form: false,
+    mega: false
+  }
 };
 
 const startScreen = document.getElementById("startScreen");
@@ -45,8 +50,13 @@ const regionSelect = document.getElementById("regionSelect");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const startButton = document.getElementById("startButton");
 
-const excludeSolvedBlock = document.getElementById("excludeSolvedBlock");
+const detailSettings = document.getElementById("detailSettings");
+const detailSettingsBody = document.getElementById("detailSettingsBody");
+const detailSettingsHelp = document.getElementById("detailSettingsHelp");
 const excludeSolvedCheckbox = document.getElementById("excludeSolvedCheckbox");
+const excludeRegionalCheckbox = document.getElementById("excludeRegionalCheckbox");
+const excludeFormCheckbox = document.getElementById("excludeFormCheckbox");
+const excludeMegaCheckbox = document.getElementById("excludeMegaCheckbox");
 const quickCountButtons = [...document.querySelectorAll(".quick-count-button")];
 
 const debugPanel = document.getElementById("debugPanel");
@@ -129,8 +139,15 @@ function bindEvents() {
     updateStartSummary();
   });
 
-  excludeSolvedCheckbox.addEventListener("change", () => {
-    updateStartSummary();
+  [
+    excludeSolvedCheckbox,
+    excludeRegionalCheckbox,
+    excludeFormCheckbox,
+    excludeMegaCheckbox
+  ].forEach(input => {
+    input.addEventListener("change", () => {
+      updateStartSummary();
+    });
   });
 
   questionCountInput.addEventListener("input", handleQuestionCountInput);
@@ -281,7 +298,7 @@ function populateDebugQuestionList() {
   state.questions.forEach(question => {
     const option = document.createElement("option");
     option.value = question.id;
-    option.label = `${question.answer} / ${getRegionLabel(question.region)}`;
+    option.label = `${question.answer} / ${getRegionMenuLabel(question.region)}`;
     debugQuestionList.appendChild(option);
   });
 }
@@ -359,14 +376,35 @@ function getCurrentRegion() {
   return regionSelect.value || "all";
 }
 
-function isExcludeSolvedEnabled() {
-  return state.mode !== "review" && excludeSolvedCheckbox.checked;
+function getCategoryExclusions() {
+  return {
+    regional: excludeRegionalCheckbox.checked,
+    form: excludeFormCheckbox.checked,
+    mega: excludeMegaCheckbox.checked
+  };
 }
 
-function updateExcludeSolvedUi() {
+function updateDetailSettingsUi() {
   const disabled = state.mode === "review";
-  excludeSolvedCheckbox.disabled = disabled;
-  excludeSolvedBlock.classList.toggle("disabled", disabled);
+  const inputs = [
+    excludeSolvedCheckbox,
+    excludeRegionalCheckbox,
+    excludeFormCheckbox,
+    excludeMegaCheckbox
+  ];
+
+  inputs.forEach(input => {
+    input.disabled = disabled;
+  });
+
+  detailSettings.classList.toggle("disabled", disabled);
+  detailSettingsBody.classList.toggle("disabled", disabled);
+
+  if (detailSettingsHelp) {
+    detailSettingsHelp.textContent = disabled
+      ? "復習モードでは詳細設定は適用されません。"
+      : "原種は常に出題されます。チェックした分類を候補から外します。";
+  }
 }
 
 function matchesRegion(question, region) {
@@ -374,6 +412,31 @@ function matchesRegion(question, region) {
     return true;
   }
   return question.region === region;
+}
+
+function isQuestionIncludedByCategory(question) {
+  const category = question.form_category || "base";
+
+  if (category === "base") {
+    return true;
+  }
+
+  const exclusions = getCategoryExclusions();
+
+  switch (category) {
+    case "regional":
+      return !exclusions.regional;
+    case "form":
+      return !exclusions.form;
+    case "mega":
+      return !exclusions.mega;
+    default:
+      return false;
+  }
+}
+
+function isExcludeSolvedEnabled() {
+  return state.mode !== "review" && excludeSolvedCheckbox.checked;
 }
 
 function getReviewIdsForRegion(region = getCurrentRegion()) {
@@ -399,6 +462,10 @@ function getAvailableQuestions(mode = state.mode, region = getCurrentRegion()) {
 
   return state.questions.filter(question => {
     if (!matchesRegion(question, region)) {
+      return false;
+    }
+
+    if (!isQuestionIncludedByCategory(question)) {
       return false;
     }
 
@@ -455,7 +522,7 @@ function updateQuickCountButtons(availableCount) {
 }
 
 function updateStartSummary() {
-  updateExcludeSolvedUi();
+  updateDetailSettingsUi();
 
   const currentRegion = getCurrentRegion();
   const available = getAvailableQuestions(state.mode, currentRegion).length;
@@ -495,6 +562,7 @@ function startSession() {
   state.region = getCurrentRegion();
   state.sessionAvailableCountAtStart = getAvailableQuestions(state.mode, state.region).length;
   state.sessionExcludeSolvedAtStart = isExcludeSolvedEnabled();
+  state.sessionCategoryExclusionsAtStart = getCategoryExclusions();
   state.sessionQuestions = buildSessionQuestions();
   state.currentIndex = 0;
   state.correct = 0;
@@ -507,7 +575,10 @@ function startSession() {
     region: state.region,
     countMode: state.questionCountMode,
     manualRequestedCount: state.manualRequestedCount,
-    excludeSolvedChecked: excludeSolvedCheckbox.checked
+    excludeSolvedChecked: excludeSolvedCheckbox.checked,
+    excludeRegionalChecked: excludeRegionalCheckbox.checked,
+    excludeFormChecked: excludeFormCheckbox.checked,
+    excludeMegaChecked: excludeMegaCheckbox.checked
   };
 
   if (state.sessionQuestions.length === 0) {
@@ -549,6 +620,11 @@ function startDebugSessionFromInput() {
   state.region = question.region || "all";
   state.sessionAvailableCountAtStart = 1;
   state.sessionExcludeSolvedAtStart = false;
+  state.sessionCategoryExclusionsAtStart = {
+    regional: false,
+    form: false,
+    mega: false
+  };
   state.sessionQuestions = [question];
   state.currentIndex = 0;
   state.correct = 0;
@@ -588,6 +664,9 @@ function retrySameConfig() {
 
   regionSelect.value = state.region;
   excludeSolvedCheckbox.checked = Boolean(state.lastConfig.excludeSolvedChecked);
+  excludeRegionalCheckbox.checked = Boolean(state.lastConfig.excludeRegionalChecked);
+  excludeFormCheckbox.checked = Boolean(state.lastConfig.excludeFormChecked);
+  excludeMegaCheckbox.checked = Boolean(state.lastConfig.excludeMegaChecked);
 
   modeButtons.forEach(btn => {
     btn.classList.toggle("active", btn.dataset.mode === state.mode);
@@ -647,7 +726,7 @@ function renderQuestion() {
   if (state.isDebugSession) {
     modeLabel.textContent = `デバッグ / ${question.id}`;
   } else {
-    modeLabel.textContent = `${getModeLabel(state.mode)} / ${getRegionLabel(state.region)}`;
+    modeLabel.textContent = `${getModeLabel(state.mode)} / ${getRegionMenuLabel(state.region)}`;
   }
 
   progressText.textContent = `${state.currentIndex + 1} / ${state.sessionQuestions.length}`;
@@ -778,7 +857,10 @@ function getNewlyCompletedRegions() {
       return;
     }
 
-    const regionQuestions = state.questions.filter(question => question.region === region);
+    const regionQuestions = state.questions.filter(question => {
+      return question.region === region && (question.form_category || "base") === "base";
+    });
+
     if (regionQuestions.length === 0) {
       return;
     }
@@ -813,6 +895,18 @@ function hasPerfectAllRegionClear() {
   }
 
   if (state.sessionExcludeSolvedAtStart) {
+    return false;
+  }
+
+  if (state.sessionCategoryExclusionsAtStart.regional) {
+    return false;
+  }
+
+  if (state.sessionCategoryExclusionsAtStart.form) {
+    return false;
+  }
+
+  if (state.sessionCategoryExclusionsAtStart.mega) {
     return false;
   }
 
@@ -854,10 +948,7 @@ function renderAchievements(regions, hasSecretAchievement) {
       <div class="achievement-badge">SECRET</div>
       <div class="achievement-title">全地方完全制覇！！</div>
       <div class="achievement-text">
-        1回のテストで全問連続正解！？
-        <p><font size="6">.....え、暇なの？</font>
-        <p>とりあえずスクショして河合に送ってみてください。
-        <br>きっといいことあると思います。
+        1回のテストで全問連続正解を達成しました。おめでとう！！
       </div>
     `;
   }
@@ -868,13 +959,13 @@ function renderAchievements(regions, hasSecretAchievement) {
 
     regionAchievementBox.innerHTML = regions
       .map(region => {
-        const label = getRegionLabel(region);
+        const label = getRegionAchievementLabel(region);
         return `
           <div class="region-complete-card">
             <div class="achievement-badge">COMPLETE</div>
-            <div class="achievement-title">${escapeHtml(label)}地方コンプリート！</div>
+            <div class="achievement-title">${escapeHtml(label)}コンプリート！</div>
             <div class="achievement-text">
-              ${escapeHtml(label)}地方のすべてのポケモンと出会い、正解しました！
+              ${escapeHtml(label)}のすべてのポケモンと出会い、正解しました！
             </div>
           </div>
         `;
@@ -907,9 +998,9 @@ function renderResult() {
   renderAchievements(newlyCompletedRegions, hasSecretAchievement);
 
   if (state.mode === "review") {
-    resultMessage.textContent = `${getRegionLabel(state.region)}の復習モードが終了しました。残っている苦手問題は次回も復習できます。`;
+    resultMessage.textContent = `${getRegionDisplayLabel(state.region)}の復習モードが終了しました。残っている苦手問題は次回も復習できます。`;
   } else {
-    resultMessage.textContent = `テストが終了しました。誤答した問題は${getRegionLabel(state.region)}の復習対象に追加されています。`;
+    resultMessage.textContent = `テストが終了しました。誤答した問題は${getRegionDisplayLabel(state.region)}の復習対象に追加されています。`;
   }
 }
 
@@ -924,29 +1015,37 @@ function getModeLabel(mode) {
   }
 }
 
-function getRegionLabel(region) {
+function getRegionMenuLabel(region) {
   switch (region) {
     case "kanto":
-      return "カントー";
+      return "カントー地方";
     case "johto":
-      return "ジョウト";
+      return "ジョウト地方";
     case "hoenn":
-      return "ホウエン";
+      return "ホウエン地方";
     case "sinnoh":
-      return "シンオウ";
+      return "シンオウ地方";
     case "unova":
-      return "イッシュ";
+      return "イッシュ地方";
     case "kalos":
-      return "カロス";
+      return "カロス地方";
     case "alola":
-      return "アローラ";
+      return "アローラ地方＋α";
     case "galar":
-      return "ガラル";
+      return "ガラル地方";
     case "hisui":
-      return "ヒスイ";
+      return "ヒスイ地方";
     case "paldea":
-      return "パルデア";
+      return "パルデア地方";
     default:
       return "全地方";
   }
+}
+
+function getRegionDisplayLabel(region) {
+  return getRegionMenuLabel(region);
+}
+
+function getRegionAchievementLabel(region) {
+  return getRegionMenuLabel(region);
 }

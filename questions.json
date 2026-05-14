@@ -30,6 +30,18 @@
     "tags": []
   },
   {
+    "id": "0003-mega",
+    "image": "images/0003-mega.png",
+    "answer": "メガフシギバナ",
+    "aliases": [
+      "フシギバナ"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0004",
     "image": "images/0004.png",
     "answer": "ヒトカゲ",
@@ -62,6 +74,32 @@
     "tags": []
   },
   {
+    "id": "0006-megaX",
+    "image": "images/0006-megaX.png",
+    "answer": "メガリザードンX",
+    "aliases": [
+      "リザードン",
+      "メガリザードン"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
+    "id": "0006-megaY",
+    "image": "images/0006-megaY.png",
+    "answer": "メガリザードンY",
+    "aliases": [
+      "リザードン",
+      "メガリザードン"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0007",
     "image": "images/0007.png",
     "answer": "ゼニガメ",
@@ -89,6 +127,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0009-mega",
+    "image": "images/0009-mega.png",
+    "answer": "メガカメックス",
+    "aliases": [
+      "カメックス"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -152,6 +202,18 @@
     "tags": []
   },
   {
+    "id": "0015-mega",
+    "image": "images/0015-mega.png",
+    "answer": "メガスピアー",
+    "aliases": [
+      "スピアー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0016",
     "image": "images/0016.png",
     "answer": "ポッポ",
@@ -179,6 +241,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0018-mega",
+    "image": "images/0018-mega.png",
+    "answer": "メガピジョット",
+    "aliases": [
+      "ピジョット"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -316,6 +390,32 @@
     "tags": []
   },
   {
+    "id": "0026-megaX",
+    "image": "images/0026-megaX.png",
+    "answer": "メガライチュウX",
+    "aliases": [
+      "ライチュウ",
+      "メガライチュウ"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
+    "id": "0026-megaY",
+    "image": "images/0026-megaY.png",
+    "answer": "メガライチュウY",
+    "aliases": [
+      "ライチュウ",
+      "メガライチュウ"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0027",
     "image": "images/0027.png",
     "answer": "サンド",
@@ -449,6 +549,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0036-mega",
+    "image": "images/0036-mega.png",
+    "answer": "メガピクシー",
+    "aliases": [
+      "ピクシー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -904,6 +1016,18 @@
     "tags": []
   },
   {
+    "id": "0065-mega",
+    "image": "images/0065-mega.png",
+    "answer": "メガフーディン",
+    "aliases": [
+      "フーディン"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0066",
     "image": "images/0066.png",
     "answer": "ワンリキー",
@@ -961,6 +1085,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0071-mega",
+    "image": "images/0071-mega.png",
+    "answer": "メガウツボット",
+    "aliases": [
+      "ウツボット"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -1180,6 +1316,18 @@
     "tags": []
   },
   {
+    "id": "0080-mega",
+    "image": "images/0080-mega.png",
+    "answer": "メガヤドラン",
+    "aliases": [
+      "ヤドラン"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0081",
     "image": "images/0081.png",
     "answer": "コイル",
@@ -1371,6 +1519,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0094-mega",
+    "image": "images/0094-mega.png",
+    "answer": "メガゲンガー",
+    "aliases": [
+      "ゲンガー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -1674,6 +1834,18 @@
     "tags": []
   },
   {
+    "id": "0115-mega",
+    "image": "images/0115-mega.png",
+    "answer": "メガガルーラ",
+    "aliases": [
+      "ガルーラ"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0116",
     "image": "images/0116.png",
     "answer": "タッツー",
@@ -1731,6 +1903,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0121-mega",
+    "image": "images/0121-mega.png",
+    "answer": "メガスターミー",
+    "aliases": [
+      "スターミー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -1812,6 +1996,18 @@
     "tags": []
   },
   {
+    "id": "0127-mega",
+    "image": "images/0127-mega.png",
+    "answer": "メガカイロス",
+    "aliases": [
+      "カイロス"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0128",
     "image": "images/0128.png",
     "answer": "ケンタロス",
@@ -1864,6 +2060,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0130-mega",
+    "image": "images/0130-mega.png",
+    "answer": "メガギャラドス",
+    "aliases": [
+      "ギャラドス"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -1984,6 +2192,18 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0142-mega",
+    "image": "images/0142-mega.png",
+    "answer": "メガプテラ",
+    "aliases": [
+      "プテラ"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -2111,6 +2331,18 @@
     "tags": []
   },
   {
+    "id": "0149-mega",
+    "image": "images/0149-mega.png",
+    "answer": "メガカイリュー",
+    "aliases": [
+      "カイリュー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0150",
     "image": "images/0150.png",
     "answer": "ミュウツー",
@@ -2118,6 +2350,32 @@
     "enabled": true,
     "region": "kanto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0150-megaX",
+    "image": "images/0150-megaX.png",
+    "answer": "メガミュウツーX",
+    "aliases": [
+      "ミュウツー",
+      "メガミュウツー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
+    "id": "0150-megaY",
+    "image": "images/0150-megaY.png",
+    "answer": "メガミュウツーY",
+    "aliases": [
+      "ミュウツー",
+      "メガミュウツー"
+    ],
+    "enabled": true,
+    "region": "kanto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -2158,6 +2416,18 @@
     "enabled": true,
     "region": "johto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0154-mega",
+    "image": "images/0154-mega.png",
+    "answer": "メガメガニウム",
+    "aliases": [
+      "メガニウム"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -2236,6 +2506,18 @@
     "enabled": true,
     "region": "johto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0160-mega",
+    "image": "images/0160-mega.png",
+    "answer": "メガオーダイル",
+    "aliases": [
+      "オーダイル"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -2446,6 +2728,18 @@
     "enabled": true,
     "region": "johto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0181-mega",
+    "image": "images/0181-mega.png",
+    "answer": "メガデンリュウ",
+    "aliases": [
+      "デンリュウ"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -2757,6 +3051,18 @@
     "tags": []
   },
   {
+    "id": "0208-mega",
+    "image": "images/0208-mega.png",
+    "answer": "メガハガネール",
+    "aliases": [
+      "ハガネール"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0209",
     "image": "images/0209.png",
     "answer": "ブルー",
@@ -2815,6 +3121,18 @@
     "tags": []
   },
   {
+    "id": "0212-mega",
+    "image": "images/0212-mega.png",
+    "answer": "メガハッサム",
+    "aliases": [
+      "ハッサム"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0213",
     "image": "images/0213.png",
     "answer": "ツボツボ",
@@ -2832,6 +3150,18 @@
     "enabled": true,
     "region": "johto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0214-mega",
+    "image": "images/0214-mega.png",
+    "answer": "メガヘラクロス",
+    "aliases": [
+      "ヘラクロス"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -3001,6 +3331,18 @@
     "tags": []
   },
   {
+    "id": "0227-mega",
+    "image": "images/0227-mega.png",
+    "answer": "メガエアームド",
+    "aliases": [
+      "エアームド"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0228",
     "image": "images/0228.png",
     "answer": "デルビル",
@@ -3018,6 +3360,18 @@
     "enabled": true,
     "region": "johto",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0229-mega",
+    "image": "images/0229-mega.png",
+    "answer": "メガヘルガー",
+    "aliases": [
+      "ヘルガー"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -3211,6 +3565,18 @@
     "tags": []
   },
   {
+    "id": "0248-mega",
+    "image": "images/0248-mega.png",
+    "answer": "メガバンギラス",
+    "aliases": [
+      "バンギラス"
+    ],
+    "enabled": true,
+    "region": "johto",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0249",
     "image": "images/0249.png",
     "answer": "ルギア",
@@ -3271,6 +3637,18 @@
     "tags": []
   },
   {
+    "id": "0254-mega",
+    "image": "images/0254-mega.png",
+    "answer": "メガジュカイン",
+    "aliases": [
+      "ジュカイン"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0255",
     "image": "images/0255.png",
     "answer": "アチャモ",
@@ -3301,6 +3679,18 @@
     "tags": []
   },
   {
+    "id": "0257-mega",
+    "image": "images/0257-mega.png",
+    "answer": "メガバシャーモ",
+    "aliases": [
+      "バシャーモ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0258",
     "image": "images/0258.png",
     "answer": "ミズゴロウ",
@@ -3328,6 +3718,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0260-mega",
+    "image": "images/0260-mega.png",
+    "answer": "メガラグラージ",
+    "aliases": [
+      "ラグラージ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -3587,6 +3989,18 @@
     "tags": []
   },
   {
+    "id": "0282-mega",
+    "image": "images/0282-mega.png",
+    "answer": "メガサーナイト",
+    "aliases": [
+      "サーナイト"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0283",
     "image": "images/0283.png",
     "answer": "アメタマ",
@@ -3787,6 +4201,18 @@
     "tags": []
   },
   {
+    "id": "0302-mega",
+    "image": "images/0302-mega.png",
+    "answer": "メガヤミラミ",
+    "aliases": [
+      "ヤミラミ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0303",
     "image": "images/0303.png",
     "answer": "クチート",
@@ -3794,6 +4220,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0303-mega",
+    "image": "images/0303-mega.png",
+    "answer": "メガクチート",
+    "aliases": [
+      "クチート"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -3827,6 +4265,18 @@
     "tags": []
   },
   {
+    "id": "0306-mega",
+    "image": "images/0306-mega.png",
+    "answer": "メガボスゴドラ",
+    "aliases": [
+      "ボスゴドラ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0307",
     "image": "images/0307.png",
     "answer": "アサナン",
@@ -3847,6 +4297,18 @@
     "tags": []
   },
   {
+    "id": "0308-mega",
+    "image": "images/0308-mega.png",
+    "answer": "メガチャーレム",
+    "aliases": [
+      "チャーレム"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0309",
     "image": "images/0309.png",
     "answer": "ラクライ",
@@ -3864,6 +4326,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0310-mega",
+    "image": "images/0310-mega.png",
+    "answer": "メガライボルト",
+    "aliases": [
+      "ライボルト"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -3957,6 +4431,18 @@
     "tags": []
   },
   {
+    "id": "0319-mega",
+    "image": "images/0319-mega.png",
+    "answer": "メガサメハダー",
+    "aliases": [
+      "サメハダー"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0320",
     "image": "images/0320.png",
     "answer": "ホエルコ",
@@ -3994,6 +4480,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0323-mega",
+    "image": "images/0323-mega.png",
+    "answer": "メガバクーダ",
+    "aliases": [
+      "バクーダ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4087,6 +4585,18 @@
     "tags": []
   },
   {
+    "id": "0332-Primal",
+    "image": "images/0332-Primal.png",
+    "answer": "ゲンシカイオーガ",
+    "aliases": [
+      "カイオーガ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0333",
     "image": "images/0333.png",
     "answer": "チルット",
@@ -4104,6 +4614,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0334-mega",
+    "image": "images/0334-mega.png",
+    "answer": "メガチルタリス",
+    "aliases": [
+      "チルタリス"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4307,6 +4829,18 @@
     "tags": []
   },
   {
+    "id": "0354-mega",
+    "image": "images/0354-mega.png",
+    "answer": "メガジュペッタ",
+    "aliases": [
+      "ジュペッタ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0355",
     "image": "images/0355.png",
     "answer": "ヨマワル",
@@ -4347,6 +4881,18 @@
     "tags": []
   },
   {
+    "id": "0358-mega",
+    "image": "images/0358-mega.png",
+    "answer": "メガチリーン",
+    "aliases": [
+      "チリーン"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0359",
     "image": "images/0359.png",
     "answer": "アブソル",
@@ -4354,6 +4900,31 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0359-mega",
+    "image": "images/0359-mega.png",
+    "answer": "メガアブソル",
+    "aliases": [
+      "アブソル"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
+    "id": "0359-megaZ",
+    "image": "images/0359-megaZ.png",
+    "answer": "メガアブソルZ",
+    "aliases": [
+      "アブソル",
+      "メガアブソル"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4384,6 +4955,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0362-mega",
+    "image": "images/0362-mega.png",
+    "answer": "メガオニゴーリ",
+    "aliases": [
+      "オニゴーリ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4497,6 +5080,18 @@
     "tags": []
   },
   {
+    "id": "0373-mega",
+    "image": "images/0373-mega.png",
+    "answer": "メガボーマンダ",
+    "aliases": [
+      "ボーマンダ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0374",
     "image": "images/0374.png",
     "answer": "ダンバル",
@@ -4526,6 +5121,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0376-mega",
+    "image": "images/0376-mega.png",
+    "answer": "メガメタグロス",
+    "aliases": [
+      "メタグロス"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4569,6 +5176,18 @@
     "tags": []
   },
   {
+    "id": "0380-mega",
+    "image": "images/0380-mega.png",
+    "answer": "メガラティアス",
+    "aliases": [
+      "ラティアス"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0381",
     "image": "images/0381.png",
     "answer": "ラティオス",
@@ -4578,6 +5197,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0381-mega",
+    "image": "images/0381-mega.png",
+    "answer": "メガラティオス",
+    "aliases": [
+      "ラティオス"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4601,6 +5232,18 @@
     "tags": []
   },
   {
+    "id": "0383-Primal",
+    "image": "images/0383-Primal.png",
+    "answer": "ゲンシグラードン",
+    "aliases": [
+      "グラードン"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0384",
     "image": "images/0384.png",
     "answer": "レックウザ",
@@ -4608,6 +5251,18 @@
     "enabled": true,
     "region": "hoenn",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0384-mega",
+    "image": "images/0384-mega.png",
+    "answer": "メガレックウザ",
+    "aliases": [
+      "レックウザ"
+    ],
+    "enabled": true,
+    "region": "hoenn",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -4757,6 +5412,18 @@
     "enabled": true,
     "region": "sinnoh",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0398-mega",
+    "image": "images/0398-mega.png",
+    "answer": "メガムクホーク",
+    "aliases": [
+      "ムクホーク"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -5134,6 +5801,18 @@
     "tags": []
   },
   {
+    "id": "0428-mega",
+    "image": "images/0428-mega.png",
+    "answer": "メガミミロップ",
+    "aliases": [
+      "ミミロップ"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0429",
     "image": "images/0429.png",
     "answer": "ムウマージ",
@@ -5304,6 +5983,31 @@
     "tags": []
   },
   {
+    "id": "0445-mega",
+    "image": "images/0445-mega.png",
+    "answer": "メガガブリアス",
+    "aliases": [
+      "ガブリアス"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
+    "id": "0445-megaZ",
+    "image": "images/0445-megaZ.png",
+    "answer": "メガガブリアスZ",
+    "aliases": [
+      "ガブリアス",
+      "メガガブリアス"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0446",
     "image": "images/0446.png",
     "answer": "ゴンベ",
@@ -5331,6 +6035,31 @@
     "enabled": true,
     "region": "sinnoh",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0448-mega",
+    "image": "images/0448-mega.png",
+    "answer": "メガルカリオ",
+    "aliases": [
+      "ルカリオ"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
+    "id": "0448-megaZ",
+    "image": "images/0448-megaZ.png",
+    "answer": "メガルカリオZ",
+    "aliases": [
+      "ルカリオ",
+      "メガルカリオ"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -5453,6 +6182,18 @@
     "enabled": true,
     "region": "sinnoh",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0460-mega",
+    "image": "images/0460-mega.png",
+    "answer": "メガユキノオー",
+    "aliases": [
+      "ユキノオー"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -5606,6 +6347,18 @@
     "tags": []
   },
   {
+    "id": "0475-mega",
+    "image": "images/0475-mega.png",
+    "answer": "メガエルレイド",
+    "aliases": [
+      "エルレイド"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0476",
     "image": "images/0476.png",
     "answer": "ダイノーズ",
@@ -5633,6 +6386,18 @@
     "enabled": true,
     "region": "sinnoh",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0478-mega",
+    "image": "images/0478-mega.png",
+    "answer": "メガユキメノコ",
+    "aliases": [
+      "ユキメノコ"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -5754,6 +6519,18 @@
     "tags": []
   },
   {
+    "id": "0485-mega",
+    "image": "images/0485-mega.png",
+    "answer": "メガヒードラン",
+    "aliases": [
+      "ヒードラン"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0486",
     "image": "images/0486.png",
     "answer": "レジギガス",
@@ -5837,6 +6614,18 @@
     "enabled": true,
     "region": "sinnoh",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0491-mega",
+    "image": "images/0491-mega.png",
+    "answer": "メガダークライ",
+    "aliases": [
+      "ダークライ"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -5931,6 +6720,18 @@
     "enabled": true,
     "region": "unova",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0500-mega",
+    "image": "images/0500-mega.png",
+    "answer": "メガエンブオー",
+    "aliases": [
+      "エンブオー"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -6278,6 +7079,18 @@
     "tags": []
   },
   {
+    "id": "0530-mega",
+    "image": "images/0530-mega.png",
+    "answer": "メガドリュウズ",
+    "aliases": [
+      "ドリュウズ"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0531",
     "image": "images/0531.png",
     "answer": "タブンネ",
@@ -6285,6 +7098,18 @@
     "enabled": true,
     "region": "unova",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0531-mega",
+    "image": "images/0531-mega.png",
+    "answer": "メガタブンネ",
+    "aliases": [
+      "タブンネ"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -6425,6 +7250,18 @@
     "enabled": true,
     "region": "unova",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0545-mega",
+    "image": "images/0545-mega.png",
+    "answer": "メガペンドラー",
+    "aliases": [
+      "ペンドラー"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -6683,6 +7520,18 @@
     "enabled": true,
     "region": "unova",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0560-mega",
+    "image": "images/0560-mega.png",
+    "answer": "メガズルズキン",
+    "aliases": [
+      "ズルズキン"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -7240,6 +8089,18 @@
     "tags": []
   },
   {
+    "id": "0604-mega",
+    "image": "images/0604-mega.png",
+    "answer": "メガシビルドン",
+    "aliases": [
+      "シビルドン"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0605",
     "image": "images/0605.png",
     "answer": "リグレー",
@@ -7287,6 +8148,18 @@
     "enabled": true,
     "region": "unova",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0609-mega",
+    "image": "images/0609-mega.png",
+    "answer": "メガシャンデラ",
+    "aliases": [
+      "シャンデラ"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -7445,6 +8318,18 @@
     "enabled": true,
     "region": "unova",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0623-mega",
+    "image": "images/0623-mega.png",
+    "answer": "メガゴルーグ",
+    "aliases": [
+      "ゴルーグ"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -7716,25 +8601,6 @@
     "note": "凡例外サフィックス: Normal"
   },
   {
-    "id": "0646-Black",
-    "image": "images/0646-Black.png",
-    "answer": "キュレム　ブラックキュレム",
-    "aliases": [
-      "キュレム（ブラックキュレム）",
-      "キュレム(ブラックキュレム)",
-      "キュレム　ブラックキュレム",
-      "キュレム ブラックキュレム",
-      "キュレムブラックキュレム",
-      "ブラックキュレム",
-      "キュレム"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "form",
-    "tags": [],
-    "note": "凡例外サフィックス: Black"
-  },
-  {
     "id": "0646-White",
     "image": "images/0646-White.png",
     "answer": "キュレム　ホワイトキュレム",
@@ -7752,6 +8618,25 @@
     "form_category": "form",
     "tags": [],
     "note": "凡例外サフィックス: White"
+  },
+  {
+    "id": "0646-Black",
+    "image": "images/0646-Black.png",
+    "answer": "キュレム　ブラックキュレム",
+    "aliases": [
+      "キュレム（ブラックキュレム）",
+      "キュレム(ブラックキュレム)",
+      "キュレム　ブラックキュレム",
+      "キュレム ブラックキュレム",
+      "キュレムブラックキュレム",
+      "ブラックキュレム",
+      "キュレム"
+    ],
+    "enabled": true,
+    "region": "unova",
+    "form_category": "form",
+    "tags": [],
+    "note": "凡例外サフィックス: Black"
   },
   {
     "id": "0647",
@@ -7822,6 +8707,18 @@
     "tags": []
   },
   {
+    "id": "0652-mega",
+    "image": "images/0652-mega.png",
+    "answer": "メガブリガロン",
+    "aliases": [
+      "ブリガロン"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0653",
     "image": "images/0653.png",
     "answer": "フォッコ",
@@ -7852,6 +8749,18 @@
     "tags": []
   },
   {
+    "id": "0655-mega",
+    "image": "images/0655-mega.png",
+    "answer": "メガマフォクシー",
+    "aliases": [
+      "マフォクシー"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0656",
     "image": "images/0656.png",
     "answer": "ケロマツ",
@@ -7879,6 +8788,18 @@
     "enabled": true,
     "region": "kalos",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0658-mega",
+    "image": "images/0658-mega.png",
+    "answer": "メガゲッコウガ",
+    "aliases": [
+      "ゲッコウガ"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -8012,6 +8933,18 @@
     "note": "凡例外サフィックス: Female"
   },
   {
+    "id": "0668-mega",
+    "image": "images/0668-mega.png",
+    "answer": "メガカエンジシ",
+    "aliases": [
+      "カエンジシ"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0669",
     "image": "images/0669.png",
     "answer": "フラベベ　あかいはな",
@@ -8037,6 +8970,18 @@
     "enabled": true,
     "region": "kalos",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0670-mega",
+    "image": "images/0670-mega.png",
+    "answer": "メガフラエッテ",
+    "aliases": [
+      "フラエッテ"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -8154,6 +9099,18 @@
     "note": "凡例外サフィックス: Female"
   },
   {
+    "id": "0678-mega",
+    "image": "images/0678-mega.png",
+    "answer": "メガニャオニクス",
+    "aliases": [
+      "ニャオニクス"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0679",
     "image": "images/0679.png",
     "answer": "ヒトツキ",
@@ -8248,6 +9205,18 @@
     "tags": []
   },
   {
+    "id": "0687-mega",
+    "image": "images/0687-mega.png",
+    "answer": "メガカラマネロ",
+    "aliases": [
+      "カラマネロ"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0688",
     "image": "images/0688.png",
     "answer": "カメテテ",
@@ -8268,6 +9237,18 @@
     "tags": []
   },
   {
+    "id": "0689-mega",
+    "image": "images/0689-mega.png",
+    "answer": "メガガメノデス",
+    "aliases": [
+      "ガメノデス"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0690",
     "image": "images/0690.png",
     "answer": "クズモー",
@@ -8285,6 +9266,18 @@
     "enabled": true,
     "region": "kalos",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0691-mega",
+    "image": "images/0691-mega.png",
+    "answer": "メガドラミドロ",
+    "aliases": [
+      "ドラミドロ"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -8385,6 +9378,18 @@
     "enabled": true,
     "region": "kalos",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0701-mega",
+    "image": "images/0701-mega.png",
+    "answer": "メガルチャブル",
+    "aliases": [
+      "ルチャブル"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -8664,6 +9669,18 @@
     "note": "凡例外サフィックス: Complete"
   },
   {
+    "id": "0718-mega",
+    "image": "images/0718-mega.png",
+    "answer": "メガジガルデ",
+    "aliases": [
+      "ジガルデ"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0719",
     "image": "images/0719.png",
     "answer": "ディアンシー",
@@ -8671,6 +9688,18 @@
     "enabled": true,
     "region": "kalos",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0719-mega",
+    "image": "images/0719-mega.png",
+    "answer": "メガディアンシー",
+    "aliases": [
+      "ディアンシー"
+    ],
+    "enabled": true,
+    "region": "kalos",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -8906,6 +9935,18 @@
     "tags": []
   },
   {
+    "id": "0740-mega",
+    "image": "images/0740-mega.png",
+    "answer": "メガケケンカニ",
+    "aliases": [
+      "ケケンカニ"
+    ],
+    "enabled": true,
+    "region": "alola",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0741-Baile",
     "image": "images/0741-Baile.png",
     "answer": "オドリドリ　めらめらスタイル",
@@ -9026,24 +10067,6 @@
     "note": "凡例外サフィックス: Midday"
   },
   {
-    "id": "0745-Dusk",
-    "image": "images/0745-Dusk.png",
-    "answer": "ルガルガン　たそがれのすがた",
-    "aliases": [
-      "ルガルガン（たそがれのすがた）",
-      "ルガルガン(たそがれのすがた)",
-      "ルガルガン　たそがれのすがた",
-      "ルガルガン たそがれのすがた",
-      "ルガルガンたそがれのすがた",
-      "ルガルガン"
-    ],
-    "enabled": true,
-    "region": "alola",
-    "form_category": "form",
-    "tags": [],
-    "note": "凡例外サフィックス: Dusk"
-  },
-  {
     "id": "0745-Midnight",
     "image": "images/0745-Midnight.png",
     "answer": "ルガルガン　まよなかのすがた",
@@ -9060,6 +10083,24 @@
     "form_category": "form",
     "tags": [],
     "note": "凡例外サフィックス: Midnight"
+  },
+  {
+    "id": "0745-Dusk",
+    "image": "images/0745-Dusk.png",
+    "answer": "ルガルガン　たそがれのすがた",
+    "aliases": [
+      "ルガルガン（たそがれのすがた）",
+      "ルガルガン(たそがれのすがた)",
+      "ルガルガン　たそがれのすがた",
+      "ルガルガン たそがれのすがた",
+      "ルガルガンたそがれのすがた",
+      "ルガルガン"
+    ],
+    "enabled": true,
+    "region": "alola",
+    "form_category": "form",
+    "tags": [],
+    "note": "凡例外サフィックス: Dusk"
   },
   {
     "id": "0746",
@@ -9296,6 +10337,18 @@
     "tags": []
   },
   {
+    "id": "0768-mega",
+    "image": "images/0768-mega.png",
+    "answer": "メガグソクムシャ",
+    "aliases": [
+      "グソクムシャ"
+    ],
+    "enabled": true,
+    "region": "alola",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0769",
     "image": "images/0769.png",
     "answer": "スナバァ",
@@ -9446,6 +10499,18 @@
     "enabled": true,
     "region": "alola",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0780-mega",
+    "image": "images/0780-mega.png",
+    "answer": "メガジジーロン",
+    "aliases": [
+      "ジジーロン"
+    ],
+    "enabled": true,
+    "region": "alola",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -9714,6 +10779,18 @@
     "tags": []
   },
   {
+    "id": "0801-mega",
+    "image": "images/0801-mega.png",
+    "answer": "メガマギアナ",
+    "aliases": [
+      "マギアナ"
+    ],
+    "enabled": true,
+    "region": "alola",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0802",
     "image": "images/0802.png",
     "answer": "マーシャドー",
@@ -9771,6 +10848,18 @@
     "enabled": true,
     "region": "alola",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0807-mega",
+    "image": "images/0807-mega.png",
+    "answer": "メガゼラオラ",
+    "aliases": [
+      "ゼラオラ"
+    ],
+    "enabled": true,
+    "region": "alola",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -10447,6 +11536,18 @@
     "enabled": true,
     "region": "galar",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0870-mega",
+    "image": "images/0870-mega.png",
+    "answer": "メガタイレーツ",
+    "aliases": [
+      "タイレーツ"
+    ],
+    "enabled": true,
+    "region": "galar",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -11430,6 +12531,18 @@
     "tags": []
   },
   {
+    "id": "0952-mega",
+    "image": "images/0952-mega.png",
+    "answer": "メガスコヴィラン",
+    "aliases": [
+      "スコヴィラン"
+    ],
+    "enabled": true,
+    "region": "paldea",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0953",
     "image": "images/0953.png",
     "answer": "シガロコ",
@@ -11614,6 +12727,18 @@
     "tags": []
   },
   {
+    "id": "0970-mega",
+    "image": "images/0970-mega.png",
+    "answer": "メガキラフロル",
+    "aliases": [
+      "キラフロル"
+    ],
+    "enabled": true,
+    "region": "paldea",
+    "form_category": "mega",
+    "tags": []
+  },
+  {
     "id": "0971",
     "image": "images/0971.png",
     "answer": "ボチ",
@@ -11696,6 +12821,18 @@
     "enabled": true,
     "region": "paldea",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0978-mega",
+    "image": "images/0978-mega.png",
+    "answer": "メガシャリタツ そったすがた",
+    "aliases": [
+      "シャリタツ"
+    ],
+    "enabled": true,
+    "region": "paldea",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -11900,6 +13037,18 @@
     "enabled": true,
     "region": "paldea",
     "form_category": "base",
+    "tags": []
+  },
+  {
+    "id": "0998-mega",
+    "image": "images/0998-mega.png",
+    "answer": "メガセグレイブ",
+    "aliases": [
+      "セグレイブ"
+    ],
+    "enabled": true,
+    "region": "paldea",
+    "form_category": "mega",
     "tags": []
   },
   {
@@ -12236,1122 +13385,6 @@
     "enabled": true,
     "region": "paldea",
     "form_category": "base",
-    "tags": []
-  },
-  {
-    "id": "0003-mega",
-    "image": "images/0003-mega.png",
-    "answer": "メガフシギバナ",
-    "aliases": [
-      "フシギバナ"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0006-megaX",
-    "image": "images/0006-megaX.png",
-    "answer": "メガリザードンX",
-    "aliases": [
-      "リザードン"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0006-megaY",
-    "image": "images/0006-megaY.png",
-    "answer": "メガリザードンY",
-    "aliases": [
-      "リザードン"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0009-mega",
-    "image": "images/0009-mega.png",
-    "answer": "メガカメックス",
-    "aliases": [
-      "カメックス"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0015-mega",
-    "image": "images/0015-mega.png",
-    "answer": "メガスピアー",
-    "aliases": [
-      "スピアー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0018-mega",
-    "image": "images/0018-mega.png",
-    "answer": "メガピジョット",
-    "aliases": [
-      "ピジョット"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0026-megaX",
-    "image": "images/0026-megaX.png",
-    "answer": "メガライチュウX",
-    "aliases": [
-      "ライチュウ"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0026-megaY",
-    "image": "images/0026-megaY.png",
-    "answer": "メガライチュウY",
-    "aliases": [
-      "ライチュウ"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0036-mega",
-    "image": "images/0036-mega.png",
-    "answer": "メガピクシー",
-    "aliases": [
-      "ピクシー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0065-mega",
-    "image": "images/0065-mega.png",
-    "answer": "メガフーディン",
-    "aliases": [
-      "フーディン"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0071-mega",
-    "image": "images/0071-mega.png",
-    "answer": "メガウツボット",
-    "aliases": [
-      "ウツボット"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0080-mega",
-    "image": "images/0080-mega.png",
-    "answer": "メガヤドラン",
-    "aliases": [
-      "ヤドラン"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0094-mega",
-    "image": "images/0094-mega.png",
-    "answer": "メガゲンガー",
-    "aliases": [
-      "ゲンガー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0115-mega",
-    "image": "images/0115-mega.png",
-    "answer": "メガガルーラ",
-    "aliases": [
-      "ガルーラ"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0121-mega",
-    "image": "images/0121-mega.png",
-    "answer": "メガスターミー",
-    "aliases": [
-      "スターミー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0127-mega",
-    "image": "images/0127-mega.png",
-    "answer": "メガカイロス",
-    "aliases": [
-      "カイロス"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0130-mega",
-    "image": "images/0130-mega.png",
-    "answer": "メガギャラドス",
-    "aliases": [
-      "ギャラドス"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0142-mega",
-    "image": "images/0142-mega.png",
-    "answer": "メガプテラ",
-    "aliases": [
-      "プテラ"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0149-mega",
-    "image": "images/0149-mega.png",
-    "answer": "メガカイリュー",
-    "aliases": [
-      "カイリュー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0150-megaX",
-    "image": "images/0150-megaX.png",
-    "answer": "メガミュウツーX",
-    "aliases": [
-      "ミュウツー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0150-megaY",
-    "image": "images/0150-megaY.png",
-    "answer": "メガミュウツーY",
-    "aliases": [
-      "ミュウツー"
-    ],
-    "enabled": true,
-    "region": "kanto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0154-mega",
-    "image": "images/0154-mega.png",
-    "answer": "メガメガニウム",
-    "aliases": [
-      "メガニウム"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0160-mega",
-    "image": "images/0160-mega.png",
-    "answer": "メガオーダイル",
-    "aliases": [
-      "オーダイル"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0181-mega",
-    "image": "images/0181-mega.png",
-    "answer": "メガデンリュウ",
-    "aliases": [
-      "デンリュウ"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0208-mega",
-    "image": "images/0208-mega.png",
-    "answer": "メガハガネール",
-    "aliases": [
-      "ハガネール"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0212-mega",
-    "image": "images/0212-mega.png",
-    "answer": "メガハッサム",
-    "aliases": [
-      "ハッサム"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0214-mega",
-    "image": "images/0214-mega.png",
-    "answer": "メガヘラクロス",
-    "aliases": [
-      "ヘラクロス"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0227-mega",
-    "image": "images/0227-mega.png",
-    "answer": "メガエアームド",
-    "aliases": [
-      "エアームド"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0229-mega",
-    "image": "images/0229-mega.png",
-    "answer": "メガヘルガー",
-    "aliases": [
-      "ヘルガー"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0248-mega",
-    "image": "images/0248-mega.png",
-    "answer": "メガバンギラス",
-    "aliases": [
-      "バンギラス"
-    ],
-    "enabled": true,
-    "region": "johto",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0254-mega",
-    "image": "images/0254-mega.png",
-    "answer": "メガジュカイン",
-    "aliases": [
-      "ジュカイン"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0257-mega",
-    "image": "images/0257-mega.png",
-    "answer": "メガバシャーモ",
-    "aliases": [
-      "バシャーモ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0260-mega",
-    "image": "images/0260-mega.png",
-    "answer": "メガラグラージ",
-    "aliases": [
-      "ラグラージ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0282-mega",
-    "image": "images/0282-mega.png",
-    "answer": "メガサーナイト",
-    "aliases": [
-      "サーナイト"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0302-mega",
-    "image": "images/0302-mega.png",
-    "answer": "メガヤミラミ",
-    "aliases": [
-      "ヤミラミ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0303-mega",
-    "image": "images/0303-mega.png",
-    "answer": "メガクチート",
-    "aliases": [
-      "クチート"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0306-mega",
-    "image": "images/0306-mega.png",
-    "answer": "メガボスゴドラ",
-    "aliases": [
-      "ボスゴドラ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0308-mega",
-    "image": "images/0308-mega.png",
-    "answer": "メガチャーレム",
-    "aliases": [
-      "チャーレム"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0310-mega",
-    "image": "images/0310-mega.png",
-    "answer": "メガライボルト",
-    "aliases": [
-      "ライボルト"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0319-mega",
-    "image": "images/0319-mega.png",
-    "answer": "メガサメハダー",
-    "aliases": [
-      "サメハダー"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0323-mega",
-    "image": "images/0323-mega.png",
-    "answer": "メガバクーダ",
-    "aliases": [
-      "バクーダ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0334-mega",
-    "image": "images/0334-mega.png",
-    "answer": "メガチルタリス",
-    "aliases": [
-      "チルタリス"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0354-mega",
-    "image": "images/0354-mega.png",
-    "answer": "メガジュペッタ",
-    "aliases": [
-      "ジュペッタ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0358-mega",
-    "image": "images/0358-mega.png",
-    "answer": "メガチリーン",
-    "aliases": [
-      "チリーン"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0359-mega",
-    "image": "images/0359-mega.png",
-    "answer": "メガアブソル",
-    "aliases": [
-      "アブソル"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0359-megaZ",
-    "image": "images/0359-megaZ.png",
-    "answer": "メガアブソルZ",
-    "aliases": [
-      "アブソル"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0362-mega",
-    "image": "images/0362-mega.png",
-    "answer": "メガオニゴーリ",
-    "aliases": [
-      "オニゴーリ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0373-mega",
-    "image": "images/0373-mega.png",
-    "answer": "メガボーマンダ",
-    "aliases": [
-      "ボーマンダ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0376-mega",
-    "image": "images/0376-mega.png",
-    "answer": "メガメタグロス",
-    "aliases": [
-      "メタグロス"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0380-mega",
-    "image": "images/0380-mega.png",
-    "answer": "メガラティアス",
-    "aliases": [
-      "ラティアス"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0381-mega",
-    "image": "images/0381-mega.png",
-    "answer": "メガラティオス",
-    "aliases": [
-      "ラティオス"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0384-mega",
-    "image": "images/0384-mega.png",
-    "answer": "メガレックウザ",
-    "aliases": [
-      "レックウザ"
-    ],
-    "enabled": true,
-    "region": "hoenn",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0398-mega",
-    "image": "images/0398-mega.png",
-    "answer": "メガムクホーク",
-    "aliases": [
-      "ムクホーク"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0428-mega",
-    "image": "images/0428-mega.png",
-    "answer": "メガミミロップ",
-    "aliases": [
-      "ミミロップ"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0445-mega",
-    "image": "images/0445-mega.png",
-    "answer": "メガガブリアス",
-    "aliases": [
-      "ガブリアス"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0445-megaZ",
-    "image": "images/0445-megaZ.png",
-    "answer": "メガガブリアスZ",
-    "aliases": [
-      "ガブリアス"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0448-mega",
-    "image": "images/0448-mega.png",
-    "answer": "メガルカリオ",
-    "aliases": [
-      "ルカリオ"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0448-megaZ",
-    "image": "images/0448-megaZ.png",
-    "answer": "メガルカリオZ",
-    "aliases": [
-      "ルカリオ"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0460-mega",
-    "image": "images/0460-mega.png",
-    "answer": "メガユキノオー",
-    "aliases": [
-      "ユキノオー"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0475-mega",
-    "image": "images/0475-mega.png",
-    "answer": "メガエルレイド",
-    "aliases": [
-      "エルレイド"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0478-mega",
-    "image": "images/0478-mega.png",
-    "answer": "メガユキメノコ",
-    "aliases": [
-      "ユキメノコ"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0485-mega",
-    "image": "images/0485-mega.png",
-    "answer": "メガヒードラン",
-    "aliases": [
-      "ヒードラン"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0491-mega",
-    "image": "images/0491-mega.png",
-    "answer": "メガダークライ",
-    "aliases": [
-      "ダークライ"
-    ],
-    "enabled": true,
-    "region": "sinnoh",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0500-mega",
-    "image": "images/0500-mega.png",
-    "answer": "メガエンブオー",
-    "aliases": [
-      "エンブオー"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0530-mega",
-    "image": "images/0530-mega.png",
-    "answer": "メガドリュウズ",
-    "aliases": [
-      "ドリュウズ"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0531-mega",
-    "image": "images/0531-mega.png",
-    "answer": "メガタブンネ",
-    "aliases": [
-      "タブンネ"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0545-mega",
-    "image": "images/0545-mega.png",
-    "answer": "メガペンドラー",
-    "aliases": [
-      "ペンドラー"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0560-mega",
-    "image": "images/0560-mega.png",
-    "answer": "メガズルズキン",
-    "aliases": [
-      "ズルズキン"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0604-mega",
-    "image": "images/0604-mega.png",
-    "answer": "メガシビルドン",
-    "aliases": [
-      "シビルドン"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0609-mega",
-    "image": "images/0609-mega.png",
-    "answer": "メガシャンデラ",
-    "aliases": [
-      "シャンデラ"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0623-mega",
-    "image": "images/0623-mega.png",
-    "answer": "メガゴルーグ",
-    "aliases": [
-      "ゴルーグ"
-    ],
-    "enabled": true,
-    "region": "unova",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0652-mega",
-    "image": "images/0652-mega.png",
-    "answer": "メガブリガロン",
-    "aliases": [
-      "ブリガロン"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0655-mega",
-    "image": "images/0655-mega.png",
-    "answer": "メガマフォクシー",
-    "aliases": [
-      "マフォクシー"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0658-mega",
-    "image": "images/0658-mega.png",
-    "answer": "メガゲッコウガ",
-    "aliases": [
-      "ゲッコウガ"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0668-mega",
-    "image": "images/0668-mega.png",
-    "answer": "メガカエンジシ",
-    "aliases": [
-      "カエンジシ"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0670-mega",
-    "image": "images/0670-mega.png",
-    "answer": "メガフラエッテ",
-    "aliases": [
-      "フラエッテ"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0678-mega",
-    "image": "images/0678-mega.png",
-    "answer": "メガニャオニクス",
-    "aliases": [
-      "ニャオニクス"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0687-mega",
-    "image": "images/0687-mega.png",
-    "answer": "メガカラマネロ",
-    "aliases": [
-      "カラマネロ"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0689-mega",
-    "image": "images/0689-mega.png",
-    "answer": "メガガメノデス",
-    "aliases": [
-      "ガメノデス"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0691-mega",
-    "image": "images/0691-mega.png",
-    "answer": "メガドラミドロ",
-    "aliases": [
-      "ドラミドロ"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0701-mega",
-    "image": "images/0701-mega.png",
-    "answer": "メガルチャブル",
-    "aliases": [
-      "ルチャブル"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0718-mega",
-    "image": "images/0718-mega.png",
-    "answer": "メガジガルデ",
-    "aliases": [
-      "ジガルデ"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0719-mega",
-    "image": "images/0719-mega.png",
-    "answer": "メガディアンシー",
-    "aliases": [
-      "ディアンシー"
-    ],
-    "enabled": true,
-    "region": "kalos",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0740-mega",
-    "image": "images/0740-mega.png",
-    "answer": "メガケケンカニ",
-    "aliases": [
-      "ケケンカニ"
-    ],
-    "enabled": true,
-    "region": "alola",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0768-mega",
-    "image": "images/0768-mega.png",
-    "answer": "メガグソクムシャ",
-    "aliases": [
-      "グソクムシャ"
-    ],
-    "enabled": true,
-    "region": "alola",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0780-mega",
-    "image": "images/0780-mega.png",
-    "answer": "メガジジーロン",
-    "aliases": [
-      "ジジーロン"
-    ],
-    "enabled": true,
-    "region": "alola",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0801-mega",
-    "image": "images/0801-mega.png",
-    "answer": "メガマギアナ",
-    "aliases": [
-      "マギアナ"
-    ],
-    "enabled": true,
-    "region": "alola",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0807-mega",
-    "image": "images/0807-mega.png",
-    "answer": "メガゼラオラ",
-    "aliases": [
-      "ゼラオラ"
-    ],
-    "enabled": true,
-    "region": "alola",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0870-mega",
-    "image": "images/0870-mega.png",
-    "answer": "メガタイレーツ",
-    "aliases": [
-      "タイレーツ"
-    ],
-    "enabled": true,
-    "region": "galar",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0952-mega",
-    "image": "images/0952-mega.png",
-    "answer": "メガスコヴィラン",
-    "aliases": [
-      "スコヴィラン"
-    ],
-    "enabled": true,
-    "region": "paldea",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0970-mega",
-    "image": "images/0970-mega.png",
-    "answer": "メガキラフロル",
-    "aliases": [
-      "キラフロル"
-    ],
-    "enabled": true,
-    "region": "paldea",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0978-mega",
-    "image": "images/0978-mega.png",
-    "answer": "メガシャリタツ そったすがた",
-    "aliases": [
-      "シャリタツ"
-    ],
-    "enabled": true,
-    "region": "paldea",
-    "form_category": "mega",
-    "tags": []
-  },
-  {
-    "id": "0998-mega",
-    "image": "images/0998-mega.png",
-    "answer": "メガセグレイブ",
-    "aliases": [
-      "セグレイブ"
-    ],
-    "enabled": true,
-    "region": "paldea",
-    "form_category": "mega",
     "tags": []
   }
 ]

@@ -6419,6 +6419,76 @@
     "note": "凡例外サフィックス: Normal"
   },
   {
+    "id": "0479-Heat",
+    "image": "images/0479-Heat.png",
+    "answer": "ロトム　ヒートロトム",
+    "aliases": [
+      "ロトム ヒートロトム",
+      "ヒートロトム",
+      "ロトム"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "form",
+    "tags": []
+  },
+  {
+    "id": "0479-Wash",
+    "image": "images/0479-Wash.png",
+    "answer": "ロトム　ウォッシュロトム",
+    "aliases": [
+      "ロトム ウォッシュロトム",
+      "ウォッシュロトム",
+      "ロトム"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "form",
+    "tags": []
+  },
+  {
+    "id": "0479-Frost",
+    "image": "images/0479-Frost.png",
+    "answer": "ロトム　フロストロトム",
+    "aliases": [
+      "ロトム フロストロトム",
+      "フロストロトム",
+      "ロトム"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "form",
+    "tags": []
+  },
+  {
+    "id": "0479-Fan",
+    "image": "images/0479-Fan.png",
+    "answer": "ロトム　スピンロトム",
+    "aliases": [
+      "ロトム スピンロトム",
+      "スピンロトム",
+      "ロトム"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "form",
+    "tags": []
+  },
+  {
+    "id": "0479-Mow",
+    "image": "images/0479-Mow.png",
+    "answer": "ロトム　カットロトム",
+    "aliases": [
+      "ロトム カットロトム",
+      "カットロトム",
+      "ロトム"
+    ],
+    "enabled": true,
+    "region": "sinnoh",
+    "form_category": "form",
+    "tags": []
+  },
+  {
     "id": "0480",
     "image": "images/0480.png",
     "answer": "ユクシー",
